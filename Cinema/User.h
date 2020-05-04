@@ -5,10 +5,11 @@
 class User 
 {
 private:
-    vector<Film> repo;  /// watchlist-ul userului
+   // vector<Film> repo;  /// watchlist-ul userului
 
 public:
 
+    vector<Film> repo;  /// watchlist-ul userului
     /**
      * @fn	User::User();
      *

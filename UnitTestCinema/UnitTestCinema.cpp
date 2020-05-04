@@ -21,7 +21,7 @@ namespace UnitTestCinema
 	TEST_CLASS(Filme)
 	{
 	public:
-		
+
 		TEST_METHOD(Constructor)
 		{
 			auto film = new Film("Six", "Comedy", 2017, 320, "viki.com");
@@ -45,22 +45,94 @@ namespace UnitTestCinema
 			Assert::AreEqual(string("come.com"), film->get_trailer());
 
 		}
+	};
+	
+	TEST_CLASS(AdminTest)
+	{
+	public:
+		//TESTE VLASIN CRISTIA
 
-		TEST_METHOD(UserT) /// de continuat testele
+		TEST_METHOD(AddFilm)
 		{
 			auto repo1 = new Admin;
-			
+
 			Film f11 = Film("Eight", "Crime", 1990, 101, "https://www.youtube.com/watch?v=znmZoVkCjpI");
-			repo1.add(f11); 
+			repo1->Admin::add(f11);
 
-			for (auto i = 0 ; ; i++)
-			
-			Assert::AreEqual(string("Eight"), i->get_titel());
-			Assert::AreEqual(string("Crime"), i->get_genre());
-			Assert::AreEqual(1990, i.get_jahr());
-			Assert::AreEqual(101, i.get_anz_likes());
-			Assert::AreEqual(string("https://www.youtube.com/watch?v=znmZoVkCjpI"), i->get_trailer());
-
+			for (auto i = 0; i < repo1->repo.size(); i++)
+			{
+				Assert::AreEqual(string("Eight"), repo1->repo[i].get_titel());
+				Assert::AreEqual(string("Crime"), repo1->repo[i].get_genre());
+				Assert::AreEqual(1990, repo1->repo[i].get_jahr());
+				Assert::AreEqual(101, repo1->repo[i].get_anz_likes());
+				Assert::AreEqual(string("https://www.youtube.com/watch?v=znmZoVkCjpI"), repo1->repo[i].get_trailer());
+			}
 		}
+
+		TEST_METHOD(DeleteFilm)
+		{
+			auto repo1 = new Admin;
+
+			Film f2 = Film("Six", "Comedy", 2017, 320, "viki.com");
+			repo1->Admin::add(f2);
+			Film f1 = Film("Eight", "Crime", 1990, 101, "https://www.youtube.com/watch?v=znmZoVkCjpI");
+			repo1->Admin::add(f1);
+
+			repo1->del(f2);
+
+			for (auto i = 0; i < repo1->repo.size(); i++)
+			{
+				Assert::AreEqual(string("Eight"), repo1->repo[i].get_titel());
+				Assert::AreEqual(string("Crime"), repo1->repo[i].get_genre());
+				Assert::AreEqual(1990, repo1->repo[i].get_jahr());
+				Assert::AreEqual(101, repo1->repo[i].get_anz_likes());
+				Assert::AreEqual(string("https://www.youtube.com/watch?v=znmZoVkCjpI"), repo1->repo[i].get_trailer());
+			}
+		}
+	};
+
+	TEST_CLASS(UserTest)
+	{
+	public:
+		//TESTE VLASIN CRISTIA
+		
+		TEST_METHOD(AddFilm)
+		{
+			auto repo1 = new User;
+
+			Film f11 = Film("Eight", "Crime", 1990, 101, "https://www.youtube.com/watch?v=znmZoVkCjpI");
+			repo1->User::add(f11);
+
+			for (auto i = 0; i < repo1->repo.size(); i++)
+			{
+				Assert::AreEqual(string("Eight"), repo1->repo[i].get_titel());
+				Assert::AreEqual(string("Crime"), repo1->repo[i].get_genre());
+				Assert::AreEqual(1990, repo1->repo[i].get_jahr());
+				Assert::AreEqual(101, repo1->repo[i].get_anz_likes());
+				Assert::AreEqual(string("https://www.youtube.com/watch?v=znmZoVkCjpI"), repo1->repo[i].get_trailer());
+			}
+		}
+
+		TEST_METHOD(DeleteFilm)
+		{
+			auto repo1 = new User;
+
+			Film f2 = Film("Six", "Comedy", 2017, 320, "viki.com");
+			repo1->User::add(f2);
+			Film f1 = Film("Eight", "Crime", 1990, 101, "https://www.youtube.com/watch?v=znmZoVkCjpI");
+			repo1->User::add(f1);
+
+			repo1->User::del(f2);
+
+			for (auto i = 0; i < repo1->repo.size(); i++)
+			{
+				Assert::AreEqual(string("Eight"), repo1->repo[i].get_titel());
+				Assert::AreEqual(string("Crime"), repo1->repo[i].get_genre());
+				Assert::AreEqual(1990, repo1->repo[i].get_jahr());
+				Assert::AreEqual(101, repo1->repo[i].get_anz_likes());
+				Assert::AreEqual(string("https://www.youtube.com/watch?v=znmZoVkCjpI"), repo1->repo[i].get_trailer());
+			}
+		}
+		
 	};
 }
