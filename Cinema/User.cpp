@@ -21,6 +21,7 @@ void User::del(Film f) /// deletes movie from watchlist
                 this->repo.erase(i);                                                /// deleted
                 cout << "Film sters din watchlist" << endl << endl;
                 found = true;
+                break;
             }
         }
         if (!found)
@@ -37,7 +38,7 @@ void User::show() /// show watchlist
     else
         for (auto i = this->repo.begin(); i < this->repo.end(); i++) 
         {
-            cout << i->get_titel() << "\tErscheinungsjahr: " << i->get_jahr() << "\tGenre: " << i->get_genre() << "\t" << i->get_anz_likes() << " likes";
+            cout << i->get_titel() << "t\Year: " << i->get_jahr() << "\tGenre: " << i->get_genre() << "\t" << i->get_anz_likes() << " likes";
             cout << endl;
         }
 }

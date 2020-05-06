@@ -25,7 +25,7 @@ void Controller::comandaadmin(int i, Admin * rep, User * watchliste) /// admin m
         cout << "Title: "; cin >> title;
         cout << "Year: "; cin >> year;
         cout << endl;
-        Film f = Film(title, "", year, 0, "");
+        Film f = Film(title, "" , year, 0, "");
         rep->del(f);
     }
     else if (i == 3)  /// edit in repo

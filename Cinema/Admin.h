@@ -7,11 +7,13 @@ class Admin
 {
 private:
    
-   // vector<Film> repo;  /// baza de date cu toate filmele
+    vector<Film> repo;  /// baza de date cu toate filmele
 
 public:
 
-    vector<Film> repo;  /// baza de date cu toate filmele
+    //vector<Film> repo;  /// baza de date cu toate filmele
+    
+
     /**
      * @fn	Admin::Admin();
      *

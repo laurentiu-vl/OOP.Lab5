@@ -37,19 +37,21 @@ void Admin::add(Film f)
 void Admin::del(Film f)
 {   
     bool found = false;
-    for (auto i = this->repo.begin(); i < this->repo.end(); i++)
+    for (auto i = this->repo.begin(); i < this->repo.end() ; i++)
     {
         if (i->get_titel() == f.get_titel() && i->get_jahr() == f.get_jahr())
         {
             this->repo.erase(i);
             cout << "Film sters din lista" << endl << endl;
             found = true;
+            break;
+
         }
     }
-    if (!found)
-    {
-        cout << "Filmul nu se afla in lista" << endl << endl;
-    }
+        if (!found)
+        {
+            cout << "Filmul nu se afla in lista" << endl << endl;
+        }
 }
 
 void Admin::edit(Film f) 
