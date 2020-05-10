@@ -59,14 +59,35 @@ namespace UnitTestCinema
 			Film f11 = Film("Eight", "Crime", 1990, 101, "https://www.youtube.com/watch?v=znmZoVkCjpI");
 			repo1->Admin::add(f11);
 
-			for (auto i = 0; i < repo1->repo.size(); i++)
+			for (auto i = 0; i < repo1->get_listesize(); i++) /// adaug f1
 			{
-				Assert::AreEqual(string("Eight"), repo1->repo[i].get_titel());
-				Assert::AreEqual(string("Crime"), repo1->repo[i].get_genre());
-				Assert::AreEqual(1990, repo1->repo[i].get_jahr());
-				Assert::AreEqual(101, repo1->repo[i].get_anz_likes());
-				Assert::AreEqual(string("https://www.youtube.com/watch?v=znmZoVkCjpI"), repo1->repo[i].get_trailer());
+				Assert::AreEqual(string("Eight"), (repo1->get_film(i)).get_titel());
+				Assert::AreEqual(string("Crime"), (repo1->get_film(i)).get_genre());
+				Assert::AreEqual(1990, (repo1->get_film(i)).get_jahr());
+				Assert::AreEqual(101, (repo1->get_film(i)).get_anz_likes());
+				Assert::AreEqual(string("https://www.youtube.com/watch?v=znmZoVkCjpI"), (repo1->get_film(i)).get_trailer());
 			}
+
+			Film f12 = Film("Nine", "Crime", 1999, 120, "https://www.youtube.com/watch?v=znmZoVkCjpI"); /// adaug f2
+			repo1->Admin::add(f12);
+
+			for (auto i = 0; i < repo1->get_listesize(); i++)
+				if (i==1)																		/// verific poz
+			{
+				Assert::AreEqual(string("Nine"), (repo1->get_film(i)).get_titel());
+				Assert::AreEqual(string("Crime"), (repo1->get_film(i)).get_genre());
+				Assert::AreEqual(1999, (repo1->get_film(i)).get_jahr());
+				Assert::AreEqual(120, (repo1->get_film(i)).get_anz_likes());
+				Assert::AreEqual(string("https://www.youtube.com/watch?v=znmZoVkCjpI"), (repo1->get_film(i)).get_trailer());
+			}
+				else if (i == 0)																/// verific poz
+				{
+					Assert::AreEqual(string("Eight"), (repo1->get_film(i)).get_titel());
+					Assert::AreEqual(string("Crime"), (repo1->get_film(i)).get_genre());
+					Assert::AreEqual(1990, (repo1->get_film(i)).get_jahr());
+					Assert::AreEqual(101, (repo1->get_film(i)).get_anz_likes());
+					Assert::AreEqual(string("https://www.youtube.com/watch?v=znmZoVkCjpI"), (repo1->get_film(i)).get_trailer());
+				}
 		}
 
 		TEST_METHOD(DeleteFilm)
@@ -80,14 +101,69 @@ namespace UnitTestCinema
 
 			repo1->del(f2);
 
-			for (auto i = 0; i < repo1->repo.size(); i++)
+			for (auto i = 0; i < repo1->get_listesize(); i++)
 			{
-				Assert::AreEqual(string("Eight"), repo1->repo[i].get_titel());
-				Assert::AreEqual(string("Crime"), repo1->repo[i].get_genre());
-				Assert::AreEqual(1990, repo1->repo[i].get_jahr());
-				Assert::AreEqual(101, repo1->repo[i].get_anz_likes());
-				Assert::AreEqual(string("https://www.youtube.com/watch?v=znmZoVkCjpI"), repo1->repo[i].get_trailer());
+				Assert::AreEqual(string("Eight"), (repo1->get_film(i)).get_titel());
+				Assert::AreEqual(string("Crime"), (repo1->get_film(i)).get_genre());
+				Assert::AreEqual(1990, (repo1->get_film(i)).get_jahr());
+				Assert::AreEqual(101, (repo1->get_film(i)).get_anz_likes());
+				Assert::AreEqual(string("https://www.youtube.com/watch?v=znmZoVkCjpI"), (repo1->get_film(i)).get_trailer());
 			}
+
+			Film f12 = Film("Nine", "Crime", 1999, 120, "https://www.youtube.com/watch?v=znmZoVkCjpI"); /// adaug alt f
+			repo1->Admin::add(f12);
+
+			repo1->del(f1);
+
+			for (auto i = 0; i < repo1->get_listesize(); i++)
+			{
+				Assert::AreEqual(string("Nine"), (repo1->get_film(i)).get_titel());
+				Assert::AreEqual(string("Crime"), (repo1->get_film(i)).get_genre());
+				Assert::AreEqual(1999, (repo1->get_film(i)).get_jahr());
+				Assert::AreEqual(120, (repo1->get_film(i)).get_anz_likes());
+				Assert::AreEqual(string("https://www.youtube.com/watch?v=znmZoVkCjpI"), (repo1->get_film(i)).get_trailer());
+			}
+
+		}
+
+		TEST_METHOD(IncrementLikes)
+		{
+			auto repo1 = new Admin;
+
+			Film f11 = Film("Eight", "Crime", 1990, 101, "https://www.youtube.com/watch?v=znmZoVkCjpI"); /// adaug f1
+			repo1->Admin::add(f11);
+
+
+			Film f12 = Film("Nine", "Crime", 1999, 120, "https://www.youtube.com/watch?v=znmZoVkCjpI"); /// adaug f2
+			repo1->Admin::add(f12);
+
+			repo1->Admin::increment(f11); repo1->Admin::increment(f11); repo1->Admin::increment(f11); repo1->Admin::increment(f11); repo1->Admin::increment(f11); repo1->Admin::increment(f11); /// +6 likes
+
+			repo1->Admin::increment(f12); repo1->Admin::increment(f12); repo1->Admin::increment(f12); repo1->Admin::increment(f12); repo1->Admin::increment(f12); /// +5 likes
+
+			for (auto i = 0; i < repo1->get_listesize(); i++)
+			{
+				if (i == 0) 
+				{
+					Assert::AreEqual(107, (repo1->get_film(i)).get_anz_likes());
+				}
+				
+				else
+				{
+					Assert::AreEqual(125, (repo1->get_film(i)).get_anz_likes());
+				}
+			}
+
+			repo1->del(f11);
+			repo1->del(f12);
+
+			Film f13 = Film("Eight", "Crime", 1990, -1, "https://www.youtube.com/watch?v=znmZoVkCjpI"); /// adaug f1
+			repo1->Admin::add(f13);
+
+			repo1->Admin::increment(f13); repo1->Admin::increment(f13); repo1->Admin::increment(f13); /// +3 likes
+			
+			Assert::AreEqual(2, (repo1->get_film(0)).get_anz_likes());
+
 		}
 	};
 
@@ -103,13 +179,13 @@ namespace UnitTestCinema
 			Film f11 = Film("Eight", "Crime", 1990, 101, "https://www.youtube.com/watch?v=znmZoVkCjpI");
 			repo1->User::add(f11);
 
-			for (auto i = 0; i < repo1->repo.size(); i++)
+			for (auto i = 0; i < repo1->get_watchlistesize(); i++)
 			{
-				Assert::AreEqual(string("Eight"), repo1->repo[i].get_titel());
-				Assert::AreEqual(string("Crime"), repo1->repo[i].get_genre());
-				Assert::AreEqual(1990, repo1->repo[i].get_jahr());
-				Assert::AreEqual(101, repo1->repo[i].get_anz_likes());
-				Assert::AreEqual(string("https://www.youtube.com/watch?v=znmZoVkCjpI"), repo1->repo[i].get_trailer());
+				Assert::AreEqual(string("Eight"), (repo1->get_film(i)).get_titel());
+				Assert::AreEqual(string("Crime"), (repo1->get_film(i)).get_genre());
+				Assert::AreEqual(1990, (repo1->get_film(i)).get_jahr());
+				Assert::AreEqual(101, (repo1->get_film(i)).get_anz_likes());
+				Assert::AreEqual(string("https://www.youtube.com/watch?v=znmZoVkCjpI"), (repo1->get_film(i)).get_trailer());
 			}
 		}
 
@@ -124,13 +200,13 @@ namespace UnitTestCinema
 
 			repo1->User::del(f2);
 
-			for (auto i = 0; i < repo1->repo.size(); i++)
+			for (auto i = 0; i < repo1->get_watchlistesize(); i++)
 			{
-				Assert::AreEqual(string("Eight"), repo1->repo[i].get_titel());
-				Assert::AreEqual(string("Crime"), repo1->repo[i].get_genre());
-				Assert::AreEqual(1990, repo1->repo[i].get_jahr());
-				Assert::AreEqual(101, repo1->repo[i].get_anz_likes());
-				Assert::AreEqual(string("https://www.youtube.com/watch?v=znmZoVkCjpI"), repo1->repo[i].get_trailer());
+				Assert::AreEqual(string("Eight"),(repo1->get_film(i)).get_titel());
+				Assert::AreEqual(string("Crime"), (repo1->get_film(i)).get_genre());
+				Assert::AreEqual(1990, (repo1->get_film(i)).get_jahr());
+				Assert::AreEqual(101, (repo1->get_film(i)).get_anz_likes());
+				Assert::AreEqual(string("https://www.youtube.com/watch?v=znmZoVkCjpI"), (repo1->get_film(i)).get_trailer());
 			}
 		}
 		

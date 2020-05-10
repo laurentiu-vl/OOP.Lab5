@@ -8,6 +8,11 @@ Admin::Admin()
     this->repo = {};
 }
 
+Film Admin::get_film(int i)
+{
+    return repo[i];
+}
+
 void Admin::ansehen()
 { 
     for (auto i = this->repo.begin(); i < this->repo.end(); i++) {

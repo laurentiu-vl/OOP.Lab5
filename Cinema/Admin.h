@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
 #include "Film.h"
-#include "user.h"
+#include "User.h"
 
 class Admin
 {
@@ -9,10 +9,7 @@ private:
    
     vector<Film> repo;  /// baza de date cu toate filmele
 
-public:
-
-    //vector<Film> repo;  /// baza de date cu toate filmele
-    
+public:    
 
     /**
      * @fn	Admin::Admin();
@@ -23,6 +20,10 @@ public:
      * @date	04-May-20
      */
     Admin();
+
+    Film get_film(int);
+
+    int get_listesize() { return repo.size(); }
 
     /**
      * @fn	void Admin::ansehen();

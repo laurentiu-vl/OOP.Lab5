@@ -1,3 +1,4 @@
+
 #pragma once
 #include <vector>
 #include "Film.h"
@@ -5,23 +6,29 @@
 class User 
 {
 private:
-   vector<Film> repo;  /// watchlist-ul userului
+   /** @brief	/ watchlist-ul userului */
+   vector<Film> repo;
 
 public:
-
-    //vector<Film> repo;  /// watchlist-ul userului
-    
                         
-    /**
-    /* 
-     * @fn	User::User();
-     *
-     * @brief	Default constructor
-     *
-     * @author	Laurentiu
-     * @date	04-May-20
-     */
      User();
+     
+     /**
+      * @fn	User User::get_film(int);
+      *
+      * @brief	Gets a film
+      *
+      * @author	Laurentiu
+      * @date	10-May-20
+      *
+      * @param 	parameter1	The first parameter.
+      *
+      * @returns	The film.
+      */
+
+     Film get_film(int);
+
+     int get_watchlistesize() { return repo.size(); }
 
     /**
      * @fn	void User::add(Film);
@@ -33,6 +40,7 @@ public:
      *
      * @param 	parameter1	The parameter 1 to add.
      */
+
     void add(Film);
 
     /**
@@ -45,17 +53,28 @@ public:
      *
      * @param 	parameter1	The first parameter.
      */
+
     void del(Film);
 
     /**
      * @fn	void User::show();
      *
-     * @brief	Shows this 
+     * @brief	Shows this
      *
      * @author	Laurentiu
      * @date	04-May-20
      */
+
     void show();
-   
+
+    /**
+     * @fn	User::~User();
+     *
+     * @brief	Destructor
+     *
+     * @author	Laurentiu
+     * @date	10-May-20
+     */
+
     ~User();
 };

@@ -7,6 +7,11 @@ User::User()
     this->repo = {};
 }
 
+Film User::get_film(int i)
+{
+    return repo[i] ;
+}
+
 void User::del(Film f) /// deletes movie from watchlist
 {    
     if (this->repo.empty())
