@@ -3,28 +3,29 @@
 
 using namespace std;
 
-Admin::Admin() 
+Repository::Repository() 
 {
-    this->repo = {};
+    this->data = {};
 }
 
-Film Admin::get_film(int i)
+Film Repository::get_film(int i)
 {
-    return repo[i];
+    return data[i];
 }
 
-void Admin::ansehen()
+void Repository::ansehen()
 { 
-    for (auto i = this->repo.begin(); i < this->repo.end(); i++) {
+    for (auto i = this->data.begin(); i < this->data.end(); i++) 
+    {
         cout << i->get_titel() << "\tYear: " << i->get_jahr() << "\tGenre: " << i->get_genre() << "\t" << i->get_anz_likes() << " likes";
         cout << endl;
     }
 }
 
-void Admin::add(Film f) 
+void Repository::add(Film f) 
 {   
     bool found = false;
-    for (auto i = this->repo.begin(); i < this->repo.end(); i++) 
+    for (auto i = this->data.begin(); i < this->data.end(); i++) 
     {
         if (i->get_titel() == f.get_titel() && i->get_jahr() == f.get_jahr())
         {
@@ -34,19 +35,19 @@ void Admin::add(Film f)
     }
     if (!found) 
     {
-        this->repo.push_back(f);
+        this->data.push_back(f);
         cout << "Film adaugat" << endl;
     }
 }
 
-void Admin::del(Film f)
+void Repository::del(Film f)
 {   
     bool found = false;
-    for (auto i = this->repo.begin(); i < this->repo.end() ; i++)
+    for (auto i = this->data.begin(); i < this->data.end() ; i++)
     {
         if (i->get_titel() == f.get_titel() && i->get_jahr() == f.get_jahr())
         {
-            this->repo.erase(i);
+            this->data.erase(i);
             cout << "Film sters din lista" << endl << endl;
             found = true;
             break;
@@ -59,7 +60,7 @@ void Admin::del(Film f)
         }
 }
 
-void Admin::edit(Film f) 
+void Repository::edit(Film f) 
 {  
     cout << "Ce se modifica:" << endl;
     cout << "1: Titlul" << endl << "2: Anul" << endl << "3: Genul" << endl << "4: Nr likes" << endl;
@@ -74,7 +75,7 @@ void Admin::edit(Film f)
             cout << "Titlu nou: ";
             string n;   cin >> n;
 
-            for (auto& i : this->repo) 
+            for (auto& i : this->data) 
             {
                 if (i.get_titel() == f.get_titel() &&
                     i.get_jahr() == f.get_jahr())
@@ -89,7 +90,7 @@ void Admin::edit(Film f)
         {     
             cout << "Anul nou: "; int k;
             cin >> k;
-            for (auto& i : this->repo)
+            for (auto& i : this->data)
             {
                 if (i.get_titel() == f.get_titel() &&
                     i.get_jahr() == f.get_jahr())
@@ -105,7 +106,7 @@ void Admin::edit(Film f)
         {      
             cout << "Genul nou: "; string gen;
             cin >> gen;
-            for (auto& i : this->repo)
+            for (auto& i : this->data)
             {
                 if (i.get_titel() == f.get_titel() &&
                     i.get_jahr() == f.get_jahr()) 
@@ -119,7 +120,7 @@ void Admin::edit(Film f)
         else if (x == 4)
         {       
             cout << " Nr likes: "; int n; cin >> n;
-            for (auto& i : this->repo)
+            for (auto& i : this->data)
             {
                 if (i.get_titel() == f.get_titel() &&
                     i.get_jahr() == f.get_jahr())
@@ -137,7 +138,7 @@ void Admin::edit(Film f)
     }
 }
 
-void Admin::suchen(User* watchliste) 
+void Repository::suchen(User* watchliste) 
 {  
     cout << "Gen: ";
     string gen;
@@ -147,7 +148,7 @@ void Admin::suchen(User* watchliste)
 
     if (gen.empty()) 
     {  /// daca nu se trece niciun gen, se afiseaza toate filmele
-        for (auto i = this->repo.begin(); i < this->repo.end(); i++) 
+        for (auto i = this->data.begin(); i < this->data.end(); i++) 
         {
             cout << i->get_titel() << " " << i->get_jahr() << " " << i->get_genre() << " " << i->get_anz_likes();
             cout << endl;
@@ -156,10 +157,10 @@ void Admin::suchen(User* watchliste)
     else
     {  
         bool found = false;
-        auto i = this->repo.begin();
+        auto i = this->data.begin();
         bool go = true;
 
-        while (i != this->repo.end() && go)
+        while (i != this->data.end() && go)
         {        /// se afiseaza cate un film din genul respectiv
             if (i->get_genre() == gen) 
             {
@@ -190,10 +191,10 @@ void Admin::suchen(User* watchliste)
 }
 
 
-void Admin::increment(Film f)
+void Repository::increment(Film f)
 {
     /// daca atunci cand userul sterge un film din watchlist doreste sa-i dea nota, se incrementeaza nr de like-uri al filmului
-    for (auto i = this->repo.begin(); i < this->repo.end(); i++)
+    for (auto i = this->data.begin(); i < this->data.end(); i++)
     {
         if (i->get_titel() == f.get_titel() && i->get_jahr() == f.get_jahr())
         {
@@ -203,4 +204,4 @@ void Admin::increment(Film f)
     }
 }
 
-Admin::~Admin() = default;
+Repository::~Repository() = default;

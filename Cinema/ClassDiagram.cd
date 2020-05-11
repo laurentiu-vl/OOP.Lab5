@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="Admin">
+  <Class Name="Repository">
     <Position X="0.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>ACAAAQAAAAAAAAAAAAEAgSACAEIAAAAAAAAAAgACAAA=</HashCode>
+      <HashCode>ACAAAQIAAAAAAAACAAEAgCAAAEIAAAAAAAAAAgACAAA=</HashCode>
       <FileName>Admin.h</FileName>
     </TypeIdentifier>
   </Class>

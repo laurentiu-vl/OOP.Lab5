@@ -5,7 +5,7 @@ Controller::Controller() = default;
 
 Controller::~Controller() = default;
 
-void Controller::comandaadmin(int i, Admin * rep, User * watchliste) /// admin menu
+void Controller::comandaadmin(int i, Repository * rep, User * watchliste) /// admin menu
 {    
     if (i == 1)    /// add in repo
     {
@@ -45,7 +45,7 @@ void Controller::comandaadmin(int i, Admin * rep, User * watchliste) /// admin m
 }
 
 
-void Controller::comandauser(int i, Admin * rep, User * watchliste) /// user menu
+void Controller::comandauser(int i, Repository * rep, User * watchliste) /// user menu
 {     
     if (i == 1)     /// search by genre
     {

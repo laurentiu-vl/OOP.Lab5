@@ -54,10 +54,10 @@ namespace UnitTestCinema
 
 		TEST_METHOD(AddFilm)
 		{
-			auto repo1 = new Admin;
+			auto repo1 = new Repository;
 
 			Film f11 = Film("Eight", "Crime", 1990, 101, "https://www.youtube.com/watch?v=znmZoVkCjpI");
-			repo1->Admin::add(f11);
+			repo1->Repository::add(f11);
 
 			for (auto i = 0; i < repo1->get_listesize(); i++) /// adaug f1
 			{
@@ -69,7 +69,7 @@ namespace UnitTestCinema
 			}
 
 			Film f12 = Film("Nine", "Crime", 1999, 120, "https://www.youtube.com/watch?v=znmZoVkCjpI"); /// adaug f2
-			repo1->Admin::add(f12);
+			repo1->Repository::add(f12);
 
 			for (auto i = 0; i < repo1->get_listesize(); i++)
 				if (i==1)																		/// verific poz
@@ -92,12 +92,12 @@ namespace UnitTestCinema
 
 		TEST_METHOD(DeleteFilm)
 		{
-			auto repo1 = new Admin;
+			auto repo1 = new Repository;
 
 			Film f2 = Film("Six", "Comedy", 2017, 320, "viki.com");
-			repo1->Admin::add(f2);
+			repo1->Repository::add(f2);
 			Film f1 = Film("Eight", "Crime", 1990, 101, "https://www.youtube.com/watch?v=znmZoVkCjpI");
-			repo1->Admin::add(f1);
+			repo1->Repository::add(f1);
 
 			repo1->del(f2);
 
@@ -111,7 +111,7 @@ namespace UnitTestCinema
 			}
 
 			Film f12 = Film("Nine", "Crime", 1999, 120, "https://www.youtube.com/watch?v=znmZoVkCjpI"); /// adaug alt f
-			repo1->Admin::add(f12);
+			repo1->Repository::add(f12);
 
 			repo1->del(f1);
 
@@ -128,18 +128,18 @@ namespace UnitTestCinema
 
 		TEST_METHOD(IncrementLikes)
 		{
-			auto repo1 = new Admin;
+			auto repo1 = new Repository;
 
 			Film f11 = Film("Eight", "Crime", 1990, 101, "https://www.youtube.com/watch?v=znmZoVkCjpI"); /// adaug f1
-			repo1->Admin::add(f11);
+			repo1->Repository::add(f11);
 
 
 			Film f12 = Film("Nine", "Crime", 1999, 120, "https://www.youtube.com/watch?v=znmZoVkCjpI"); /// adaug f2
-			repo1->Admin::add(f12);
+			repo1->Repository::add(f12);
 
-			repo1->Admin::increment(f11); repo1->Admin::increment(f11); repo1->Admin::increment(f11); repo1->Admin::increment(f11); repo1->Admin::increment(f11); repo1->Admin::increment(f11); /// +6 likes
+			repo1->Repository::increment(f11); repo1->Repository::increment(f11); repo1->Repository::increment(f11); repo1->Repository::increment(f11); repo1->Repository::increment(f11); repo1->Repository::increment(f11); /// +6 likes
 
-			repo1->Admin::increment(f12); repo1->Admin::increment(f12); repo1->Admin::increment(f12); repo1->Admin::increment(f12); repo1->Admin::increment(f12); /// +5 likes
+			repo1->Repository::increment(f12); repo1->Repository::increment(f12); repo1->Repository::increment(f12); repo1->Repository::increment(f12); repo1->Repository::increment(f12); /// +5 likes
 
 			for (auto i = 0; i < repo1->get_listesize(); i++)
 			{
@@ -158,9 +158,9 @@ namespace UnitTestCinema
 			repo1->del(f12);
 
 			Film f13 = Film("Eight", "Crime", 1990, -1, "https://www.youtube.com/watch?v=znmZoVkCjpI"); /// adaug f1
-			repo1->Admin::add(f13);
+			repo1->Repository::add(f13);
 
-			repo1->Admin::increment(f13); repo1->Admin::increment(f13); repo1->Admin::increment(f13); /// +3 likes
+			repo1->Repository::increment(f13); repo1->Repository::increment(f13); repo1->Repository::increment(f13); /// +3 likes
 			
 			Assert::AreEqual(2, (repo1->get_film(0)).get_anz_likes());
 

@@ -6,7 +6,7 @@ UI::~UI() = default;
 
 void UI::program() 
 {
-    Admin repo = Admin();       /// repo
+    Repository repo = Repository();       /// repo
     User watchlist = User();    /// watchlist of user
 
     Film f1 = Film("Seven", "Crime", 1995, 100, "https://www.youtube.com/watch?v=znmZoVkCjpI");

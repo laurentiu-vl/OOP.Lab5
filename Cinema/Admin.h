@@ -3,11 +3,11 @@
 #include "Film.h"
 #include "User.h"
 
-class Admin
+class Repository
 {
 private:
    
-    vector<Film> repo;  /// baza de date cu toate filmele
+    vector<Film> data;  /// baza de date cu toate filmele
 
 public:    
 
@@ -19,11 +19,11 @@ public:
      * @author	Laurentiu
      * @date	04-May-20
      */
-    Admin();
+    Repository();
 
     Film get_film(int);
 
-    int get_listesize() { return repo.size(); }
+    int get_listesize() { return data.size(); }
 
     /**
      * @fn	void Admin::ansehen();
@@ -95,5 +95,5 @@ public:
      */
     void increment(Film);   
     
-    ~Admin();
+    ~Repository();
 };
