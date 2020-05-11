@@ -2,7 +2,7 @@
 #include <vector>
 #include "Film.h"
 
-class User 
+class UserController 
 {
 private:
    /** @brief	/ watchlist-ul userului */
@@ -10,7 +10,7 @@ private:
 
 public:
                         
-     User();
+     UserController();
      
      /**
       * @fn	User User::get_film(int);
@@ -75,5 +75,5 @@ public:
      * @date	10-May-20
      */
 
-    ~User();
+    ~UserController();
 };

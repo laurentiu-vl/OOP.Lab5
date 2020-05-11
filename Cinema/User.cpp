@@ -2,17 +2,17 @@
 #include <iostream>
 using namespace std;
 
-User::User() 
+UserController::UserController() 
 {
     this->repo = {};
 }
 
-Film User::get_film(int i)
+Film UserController::get_film(int i)
 {
     return repo[i] ;
 }
 
-void User::del(Film f) /// deletes movie from watchlist
+void UserController::del(Film f) /// deletes movie from watchlist
 {    
     if (this->repo.empty())
         cout << " Lista goala!" << endl;
@@ -36,7 +36,7 @@ void User::del(Film f) /// deletes movie from watchlist
     }
 }
 
-void User::show() /// show watchlist
+void UserController::show() /// show watchlist
 {   
     if (this->repo.empty())
         cout << " Lista goala!" << endl << endl;
@@ -48,7 +48,7 @@ void User::show() /// show watchlist
         }
 }
 
-void User::add(Film f)  /// movie in watchlist added
+void UserController::add(Film f)  /// movie in watchlist added
 {    
     bool found = false;
     for (auto i = this->repo.begin(); i < this->repo.end(); i++)
@@ -68,4 +68,4 @@ void User::add(Film f)  /// movie in watchlist added
 
 }
 
-User::~User() = default;
+UserController::~UserController() = default;

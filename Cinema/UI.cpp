@@ -7,7 +7,7 @@ UI::~UI() = default;
 void UI::program() 
 {
     Repository repo = Repository();       /// repo
-    User watchlist = User();    /// watchlist of user
+    UserController watchlist = UserController();    /// watchlist of user
 
     Film f1 = Film("Seven", "Crime", 1995, 100, "https://www.youtube.com/watch?v=znmZoVkCjpI");
     Film f2 = Film("Inception", "Sci-Fi", 2010, 1500, "https://www.youtube.com/watch?v=YoHD9XEInc0");

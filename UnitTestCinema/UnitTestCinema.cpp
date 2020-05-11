@@ -174,10 +174,10 @@ namespace UnitTestCinema
 		
 		TEST_METHOD(AddFilm)
 		{
-			auto repo1 = new User;
+			auto repo1 = new UserController;
 
 			Film f11 = Film("Eight", "Crime", 1990, 101, "https://www.youtube.com/watch?v=znmZoVkCjpI");
-			repo1->User::add(f11);
+			repo1->UserController::add(f11);
 
 			for (auto i = 0; i < repo1->get_watchlistesize(); i++)
 			{
@@ -191,14 +191,14 @@ namespace UnitTestCinema
 
 		TEST_METHOD(DeleteFilm)
 		{
-			auto repo1 = new User;
+			auto repo1 = new UserController;
 
 			Film f2 = Film("Six", "Comedy", 2017, 320, "viki.com");
-			repo1->User::add(f2);
+			repo1->UserController::add(f2);
 			Film f1 = Film("Eight", "Crime", 1990, 101, "https://www.youtube.com/watch?v=znmZoVkCjpI");
-			repo1->User::add(f1);
+			repo1->UserController::add(f1);
 
-			repo1->User::del(f2);
+			repo1->UserController::del(f2);
 
 			for (auto i = 0; i < repo1->get_watchlistesize(); i++)
 			{

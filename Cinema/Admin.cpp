@@ -138,7 +138,7 @@ void Repository::edit(Film f)
     }
 }
 
-void Repository::suchen(User* watchliste) 
+void Repository::suchen(UserController* watchliste) 
 {  
     cout << "Gen: ";
     string gen;

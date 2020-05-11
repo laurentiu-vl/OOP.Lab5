@@ -81,7 +81,7 @@ public:
      *
      * @param [in,out]	parameter1	If non-null, the first parameter.
      */
-    void suchen(User*);
+    void suchen(UserController*);
 
     /**
      * @fn	void Admin::increment(Film);
