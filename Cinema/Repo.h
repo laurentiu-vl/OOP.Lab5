@@ -92,7 +92,21 @@ public:
      *
      * @param 	parameter1	The first parameter.
      */
-    void increment(Film);   
+    bool increment(Film);   
+
+    bool edit_valid(Film);
+
+    vector <Film>::iterator search_a_movie(Film);
+
+    bool edit_title(vector <Film>::iterator i, string title);
+
+    bool edit_year(vector <Film>::iterator i, int year);
+
+    bool edit_genre(vector <Film>::iterator i, string genre);
+
+    bool edit_trailer(vector <Film>::iterator i, string trailer);
+
+    bool edit_nrlikes(vector <Film>::iterator i, int likes);
     
     ~Repository();
 };

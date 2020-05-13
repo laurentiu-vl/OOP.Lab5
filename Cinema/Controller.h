@@ -3,7 +3,7 @@
 #include "Repo.h"
 #include "UserRepo.h" 
 
-class Controller 
+class Controller
 {
 private: 
     UserWatchlist UserRepo;
@@ -35,6 +35,18 @@ public:
     void delete_from_watch(Film);
 
     void show_watch();
+
+    void likes_plus(Film);
+
+    bool edit_title_admin(Film f, string title);
     
+    void edit_year_admin();
+
+    void edit_genre_admin();
+
+    void edit_trailer_admin();
+
+    void edit_nrlikes_admin();
+
     ~Controller();
 };

@@ -8,12 +8,10 @@ bool UserWatchlist::watchlist_add(Film f)  /// movie in watchlist added
     bool found = true;
     for (auto i = this->watchlist.begin(); i < this->watchlist.end(); i++)
     {
-
         if (i->get_titel() == f.get_titel() && i->get_jahr() == f.get_jahr())
         {
             //cout << "Filmul exista deja in watchlist" << endl << endl;
             found = false;
-
         }
     }
     if (found)

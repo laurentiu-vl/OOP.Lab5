@@ -114,83 +114,133 @@ void Controller::del_admin(Film f)
         cout << "Filmul nu se afla in lista" << endl << endl;
 }
 
-void Controller::edit_admin(Film f) 
-{  
-    cout << "Ce se modifica:" << endl;
-    cout << "1: Titlul" << endl << "2: Anul" << endl << "3: Genul" << endl << "4: Nr likes" << endl;
-    cout << "0: Exit" << endl << "Alegeti o tasta: ";
-    int x; cin >> x;
-    if (x == 0)
-        return;
-    while (x != 0) 
+void Controller::likes_plus(Film f1)
+{
+    if (this->Repo.increment(f1) == true)
     {
-        if (x == 1)
-        {       
-            cout << "Titlu nou: ";
-            string n;   cin >> n;
-
-            for (auto& i : this->data) 
-            {
-                if (i.get_titel() == f.get_titel() &&
-                    i.get_jahr() == f.get_jahr())
-                {       
-                    f.set_titel(n);
-                    cout << " Titlu schimbat" << endl << endl;
-                }
-            }
-
-        }
-        else if (x == 2)
-        {     
-            cout << "Anul nou: "; int k;
-            cin >> k;
-            for (auto& i : this->data)
-            {
-                if (i.get_titel() == f.get_titel() &&
-                    i.get_jahr() == f.get_jahr())
-                {        
-                    i.set_jahr(k);                                                      
-                    f.set_jahr(k);
-                    cout << " An schimbat" << endl << endl;
-
-                }
-            }
-        }
-        else if (x == 3) 
-        {      
-            cout << "Genul nou: "; string gen;
-            cin >> gen;
-            for (auto& i : this->data)
-            {
-                if (i.get_titel() == f.get_titel() &&
-                    i.get_jahr() == f.get_jahr()) 
-                {        
-                    f.set_genre(gen);
-                    cout << " Gen schimbat" << endl << endl;
-
-                }
-            }
-        }
-        else if (x == 4)
-        {       
-            cout << " Nr likes: "; int n; cin >> n;
-            for (auto& i : this->data)
-            {
-                if (i.get_titel() == f.get_titel() &&
-                    i.get_jahr() == f.get_jahr())
-                {        /// gasesc filmul respectiv in lista
-                    i.set_anz_likes(n);                                                  
-                    f.set_anz_likes(n);
-                    cout << "Numar schimbat" << endl << endl;
-                }
-            }
-        }
-        cout << "Mai modificati ceva?" << endl;
-        cout << "1: Titlul" << endl << "2: Anul" << endl << "3: Genul" << endl << "4: Nr likes" << endl;
-        cout << "0: Exit" << endl << "Alegeti o tasta: ";
-        cin >> x;
+        cout << "Numarul de like-uri a fost incrementat" << endl << endl;
     }
 }
+
+bool Controller::edit_title_admin(Film f, string title)
+{
+    vector <Film>::iterator i = Repo.search_a_movie(f);
+    if (i == Repo.data.end())
+        return false;
+    else
+        this->Repo.edit_title(i, title);
+    return true;
+}
+
+void Controller::edit_year_admin(Film f, int year)
+{
+    vector <Film>::iterator i = search_a_movie(f);
+    if (i == data.end())
+        return false;
+    else
+        this->Repo.edit_title(i, title);
+    return true;
+
+
+}
+
+void Controller::edit_genre_admin(Film f)
+{
+
+
+}
+
+void Controller::edit_trailer_admin(Film f)
+{
+
+
+}
+
+void Controller::edit_nrlikes_admin(Film f)
+{
+
+
+}
+
+
+
+//void Controller::edit_admin(Film f) 
+//{  
+//    cout << "Ce se modifica:" << endl;
+//    cout << "1: Titlul" << endl << "2: Anul" << endl << "3: Genul" << endl << "4: Nr likes" << endl;
+//    cout << "0: Exit" << endl << "Alegeti o tasta: ";
+//    int x; cin >> x;
+//    if (x == 0)
+//        return;
+//    while (x != 0) 
+//    {
+//        if (x == 1)
+//        {       
+//            cout << "Titlu nou: ";
+//            string n;   cin >> n;
+//
+//            for (auto& i : this->data) 
+//            {
+//                if (i.get_titel() == f.get_titel() &&
+//                    i.get_jahr() == f.get_jahr())
+//                {       
+//                    f.set_titel(n);
+//                    cout << " Titlu schimbat" << endl << endl;
+//                }
+//            }
+//
+//        }
+//        else if (x == 2)
+//        {     
+//            cout << "Anul nou: "; int k;
+//            cin >> k;
+//            for (auto& i : this->data)
+//            {
+//                if (i.get_titel() == f.get_titel() &&
+//                    i.get_jahr() == f.get_jahr())
+//                {        
+//                    i.set_jahr(k);                                                      
+//                    f.set_jahr(k);
+//                    cout << " An schimbat" << endl << endl;
+//
+//                }
+//            }
+//        }
+//        else if (x == 3) 
+//        {      
+//            cout << "Genul nou: "; string gen;
+//            cin >> gen;
+//            for (auto& i : this->data)
+//            {
+//                if (i.get_titel() == f.get_titel() &&
+//                    i.get_jahr() == f.get_jahr()) 
+//                {        
+//                    f.set_genre(gen);
+//                    cout << " Gen schimbat" << endl << endl;
+//
+//                }
+//            }
+//        }
+//        else if (x == 4)
+//        {       
+//            cout << " Nr likes: "; int n; cin >> n;
+//            for (auto& i : this->data)
+//            {
+//                if (i.get_titel() == f.get_titel() &&
+//                    i.get_jahr() == f.get_jahr())
+//                {        /// gasesc filmul respectiv in lista
+//                    i.set_anz_likes(n);                                                  
+//                    f.set_anz_likes(n);
+//                    cout << "Numar schimbat" << endl << endl;
+//                }
+//            }
+//        }
+//        cout << "Mai modificati ceva?" << endl;
+//        cout << "1: Titlul" << endl << "2: Anul" << endl << "3: Genul" << endl << "4: Nr likes" << endl;
+//        cout << "0: Exit" << endl << "Alegeti o tasta: ";
+//        cin >> x;
+//    }
+//}
 
 void Controller::add_to_watch(Film f1)
 {

@@ -1,6 +1,6 @@
 #include <iostream>
 
-class UI 
+class UI: public Controller
 {
 public:
 
