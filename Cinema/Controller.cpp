@@ -9,7 +9,7 @@ void Controller::comandaadmin(int i, Repository * rep, User * watchliste) /// ad
 {    
     if (i == 1)    /// add in repo
     {
-        string title, genre, trailer;////////////////////
+        string title, genre, trailer; ////////////////////
         int year, nrlikes;
         cout << "Title: "; cin >> title;
         cout << "Genre: "; cin >> genre;

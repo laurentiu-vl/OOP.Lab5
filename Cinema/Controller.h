@@ -1,7 +1,7 @@
 #pragma once
 #include "Film.h"
-#include "admin.h"
-#include "user.h"
+#include "Repo.h"
+#include "UserRepo.h" 
 
 class Controller 
 {
