@@ -1,7 +1,6 @@
 #pragma once
 #include <vector>
 #include "Film.h"
-#include "User.h"
 
 class Repository
 {
@@ -12,7 +11,7 @@ private:
 public:    
 
     /**
-     * @fn	Admin::Admin();
+     * @fn	Repository::Repository();
      *
      * @brief	Default constructor
      *
@@ -26,17 +25,17 @@ public:
     int get_listesize() { return data.size(); }
 
     /**
-     * @fn	void Admin::ansehen();
+     * @fn	    vector<Film> Repository::list_films();
      *
-     * @brief	Ansehens this 
+     * @brief	List_films
      *
      * @author	Laurentiu
      * @date	04-May-20
      */
-    void ansehen();
+    vector<Film> list_films();
 
     /**
-     * @fn	void Admin::add(Film);
+     * @fn	bool add(Film);
      *
      * @brief	Adds parameter1
      *
@@ -45,10 +44,10 @@ public:
      *
      * @param 	parameter1	The parameter 1 to add.
      */
-    void add(Film);
+    bool add(Film);
 
     /**
-     * @fn	void Admin::del(Film);
+     * @fn	bool Repository::del(Film);
      *
      * @brief	Deletes the given parameter1
      *
@@ -57,10 +56,10 @@ public:
      *
      * @param 	parameter1	The first parameter.
      */
-    void del(Film);
+    bool del(Film);
 
     /**
-     * @fn	void Admin::edit(Film);
+     * @fn	bool Repository::edit(Film);
      *
      * @brief	Edits the given parameter 1
      *
@@ -69,10 +68,10 @@ public:
      *
      * @param 	parameter1	The first parameter.
      */
-    void edit(Film);
+    bool edit(Film);
 
     /**
-     * @fn	void Admin::suchen(User*);
+     * @fn	void Repository::suchen(User*);
      *
      * @brief	Suchens the given parameter 1
      *
@@ -81,10 +80,10 @@ public:
      *
      * @param [in,out]	parameter1	If non-null, the first parameter.
      */
-    void suchen(User*);
+    bool suchen(User*);
 
     /**
-     * @fn	void Admin::increment(Film);
+     * @fn	void Repository::increment(Film);
      *
      * @brief	Increments the given parameter 1 (nrlikes)
      *

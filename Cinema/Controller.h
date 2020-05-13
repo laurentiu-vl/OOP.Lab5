@@ -5,6 +5,11 @@
 
 class Controller 
 {
+private: 
+    UserWatchlist UserRepo;
+
+    Repository Repo;
+
 public:
 
     /**
@@ -15,35 +20,21 @@ public:
      * @author	Laurentiu
      * @date	04-May-20
      */
-    Controller();
+    Controller(UserWatchlist UserRepo, Repository Repo);
 
-    /**
-     * @fn	void Controller::comandaadmin(int, admin*, User*);
-     *
-     * @brief	Comandaadmins
-     *
-     * @author	Laurentiu
-     * @date	04-May-20
-     *
-     * @param 		  	parameter1	The first parameter.
-     * @param [in,out]	parameter2	If non-null, the second parameter.
-     * @param [in,out]	parameter3	If non-null, the third parameter.
-     */
-    void comandaadmin(int, Repository*, User*);  /// Metodele meniului de ADMIN
+    void list_films_admin();
 
-    /**
-     * @fn	void Controller::comandauser(int, admin*, User*);
-     *
-     * @brief	Comandausers
-     *
-     * @author	Laurentiu
-     * @date	04-May-20
-     *
-     * @param 		  	parameter1	The first parameter.
-     * @param [in,out]	parameter2	If non-null, the second parameter.
-     * @param [in,out]	parameter3	If non-null, the third parameter.
-     */
-    void comandauser(int, Repository*, User*);   /// Metodele meniului de USER
+    void add_admin(Film f);
+
+    void del_admin(Film f);
+
+    void edit_admin(Film f);
+
+    void add_to_watch(Film);
+
+    void delete_from_watch(Film);
+
+    void show_watch();
     
     ~Controller();
 };

@@ -2,32 +2,40 @@
 #include <vector>
 #include "Film.h"
 
-class User 
+class UserWatchlist
 {
 private:
-   /** @brief	/ watchlist-ul userului */
-   vector<Film> repo;
+    /** @brief	/ watchlist-ul userului */
+    vector<Film> watchlist;
 
 public:
-                        
-     User();
-     
-     /**
-      * @fn	User User::get_film(int);
-      *
-      * @brief	Gets a film
-      *
-      * @author	Laurentiu
-      * @date	10-May-20
-      *
-      * @param 	parameter1	The first parameter.
-      *
-      * @returns	The film.
-      */
 
-     Film get_film(int);
+    bool watchlist_add(Film);
 
-     int get_watchlistesize() { return repo.size(); }
+    bool watchlist_delete(Film);
+
+    vector <Film> watchlist_search(Film);
+
+    vector <Film> watchlist_show();
+
+    //UserController();
+
+    /**
+     * @fn	User User::get_film(int);
+     *
+     * @brief	Gets a film
+     *
+     * @author	Laurentiu
+     * @date	10-May-20
+     *
+     * @param 	parameter1	The first parameter.
+     *
+     * @returns	The film.
+     */
+
+    //Film get_film(int);
+
+    //int get_watchlistesize() { return repo.size(); }
 
     /**
      * @fn	void User::add(Film);
@@ -40,7 +48,7 @@ public:
      * @param 	parameter1	The parameter 1 to add.
      */
 
-    void add(Film);
+    //void add(Film);
 
     /**
      * @fn	void User::del(Film);
@@ -53,7 +61,7 @@ public:
      * @param 	parameter1	The first parameter.
      */
 
-    void del(Film);
+    //void del(Film);
 
     /**
      * @fn	void User::show();
@@ -64,7 +72,7 @@ public:
      * @date	04-May-20
      */
 
-    void show();
+    //void show();
 
     /**
      * @fn	User::~User();
@@ -75,5 +83,5 @@ public:
      * @date	10-May-20
      */
 
-    ~User();
+    //~UserController();
 };

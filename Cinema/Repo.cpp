@@ -1,4 +1,4 @@
-#include "admin.h"
+#include "Repo.h"
 #include <iostream>
 
 using namespace std;
@@ -13,51 +13,40 @@ Film Repository::get_film(int i)
     return data[i];
 }
 
-void Repository::ansehen()
+vector<Film> Repository::list_films()
 { 
+    vector<Film> liste_films = {};
     for (auto i = this->data.begin(); i < this->data.end(); i++) 
     {
-        cout << i->get_titel() << "\tYear: " << i->get_jahr() << "\tGenre: " << i->get_genre() << "\t" << i->get_anz_likes() << " likes";
-        cout << endl;
+        Film temp = Film(i->get_titel(), i->get_genre(), i->get_jahr(), i->get_anz_likes(), i->get_trailer());
+        liste_films.push_back(temp);
     }
+    return liste_films;
 }
 
-void Repository::add(Film f) 
+bool Repository::add(Film f) 
 {   
-    bool found = false;
     for (auto i = this->data.begin(); i < this->data.end(); i++) 
     {
         if (i->get_titel() == f.get_titel() && i->get_jahr() == f.get_jahr())
         {
-            cout << "Filmul exista deja in lista" << endl << endl;
-            found = true;
+            return false;
         }
     }
-    if (!found) 
-    {
-        this->data.push_back(f);
-        cout << "Film adaugat" << endl;
-    }
+    this->data.push_back(f);
+    return true;
 }
 
-void Repository::del(Film f)
+bool Repository::del(Film f)
 {   
-    bool found = false;
     for (auto i = this->data.begin(); i < this->data.end() ; i++)
     {
         if (i->get_titel() == f.get_titel() && i->get_jahr() == f.get_jahr())
         {
             this->data.erase(i);
-            cout << "Film sters din lista" << endl << endl;
-            found = true;
-            break;
-
+            return true;
         }
-    }
-        if (!found)
-        {
-            cout << "Filmul nu se afla in lista" << endl << endl;
-        }
+    return false;
 }
 
 void Repository::edit(Film f) 
