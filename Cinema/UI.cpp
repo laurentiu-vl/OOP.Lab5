@@ -88,7 +88,8 @@ void UI::program()
                 {
                     string title, genre, trailer;
                     int year, nrlikes;
-                    cout << "Title: "; cin >> title;
+                    cout << "Title: ";
+                     cin >> title;
                     cout << "Genre: "; cin >> genre;
                     cout << "Year: "; cin >> year;
                     cout << "Number of likes: "; cin >> nrlikes;

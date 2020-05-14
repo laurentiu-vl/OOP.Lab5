@@ -59,7 +59,7 @@ vector <Film> UserWatchlist::watchlist_show() /// show watchlist
     else
         for (auto i = this->watchlist.begin(); i < this->watchlist.end(); i++)
         {
-            cout << i->get_titel() << "\tYear: " << i->get_jahr() << "\tGenre: " << i->get_genre() << "\t" << i->get_anz_likes() << " likes";
+           
             cout << endl;
             to_show.push_back(*i);
             
