@@ -1,13 +1,17 @@
 #include "UI.h"
 #include <string>
 
+using namespace std;
+
 UI::UI() = default;
 UI::~UI() = default;
 
 void UI::program() 
 {
     Repository repo = Repository();       /// repo
+
     UserWatchlist watchlist = UserWatchlist();    /// watchlist of user
+
     Controller controller = Controller(watchlist, repo);
 
     Film f1 = Film("Seven", "Crime", 1995, 100, "https://www.youtube.com/watch?v=znmZoVkCjpI");
@@ -23,7 +27,7 @@ void UI::program()
 
     controller.add_admin(f1);
     controller.add_admin(f2);
-    controller.add_admin(f3);
+    controller.add_admin(f3);   /// am sters din admin add cout-ul si dam cout in ui ca sa nu apara de 10 ori
     controller.add_admin(f4);
     controller.add_admin(f5);
     controller.add_admin(f6);
@@ -31,6 +35,7 @@ void UI::program()
     controller.add_admin(f8);
     controller.add_admin(f9);
     controller.add_admin(f10);
+
 
     int opt = -1;
     while (opt)
@@ -65,6 +70,7 @@ void UI::program()
                 else if (u == 2)
                 {
                     controller.show_watch();
+                   
                 }
                 else if (u == 3)
                 {
@@ -132,7 +138,12 @@ void UI::program()
                     cout << "Number of likes: "; cin >> nrlikes;
                     cout << endl;
                     Film f = Film(title, genre, year, nrlikes, trailer);
-                    controller.add_admin(f);
+                    if (controller.add_admin(f) == false)
+                        cout << "Filmul exista deja in lista" << endl << endl << "\n";
+                    else
+                        cout << "Film adaugat" << endl << "\n";
+
+
 			    }
                 else if(a == 2)
                 {
@@ -217,7 +228,9 @@ void UI::program()
 			    }
                 else if(a == 4)
                 {
+                cout << "\n";
                     controller.list_films_admin();
+                    
                 }
                 else
                 {

@@ -90,12 +90,13 @@ void Controller::comandauser(int i, Repository * rep, User * watchliste) /// use
 }
 */
 
-void Controller::add_admin(Film f)
+bool Controller::add_admin(Film f)
 {
-    if(this->Repo.add(f) == false)
-        cout << "Filmul exista deja in lista" << endl << endl;
+    if (this->Repo.add(f) == false)
+        return false;
     else
-        cout << "Film adaugat" << endl;
+        return true;
+        
 }
 
 void Controller::list_films_admin()
@@ -105,6 +106,7 @@ void Controller::list_films_admin()
     {
         cout << i->get_titel() << "\tYear: " << i->get_jahr() << "\tGenre: " << i->get_genre() << "\t" << i->get_anz_likes() << " likes";
         cout << "\nTrailer: " << i->get_trailer() << endl;
+        cout << "\n";
     }
 }
 
