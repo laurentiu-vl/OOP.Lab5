@@ -64,7 +64,44 @@ void UI::program()
                 }
                 else if (u == 1)
                 {
-                    ;
+                    cout << "For what genre are you looking for?\n";
+                    string genre;
+                    cout << "Genre: ";
+                    cin >> genre;
+
+
+                    int opt2 = -1;
+                    vector <Film> genre_ff = controller.movies_by_genre_to_show(genre);
+
+                    while (opt2)
+                    {
+                        cout << "1. Add movie to watchlist\n"
+                             << "2. I like the movie \n"
+                             << "0. Back\n\n";
+
+                        cout << "Optiune: ";
+                        cin >> opt2;
+                        if (opt2 == 1)
+                        {
+                            cout << "\nChoose the number of the movie: ";
+                            int nrf;
+                            cin >> nrf;
+                            controller.add_to_watch(genre_ff[nrf - 1]);
+                        }
+                        else if (opt2 == 0)
+                        {
+                            break;
+                        }
+
+                        if (opt2 == 2)
+                        {
+                            cout << "\nChoose the number of the movie: ";
+                            int nrf;
+                            cin >> nrf;
+                            controller.likes_plus(genre_ff[nrf - 1]);
+                        }
+                    }
+
                     //controller.suchen();
                 }
                 else if (u == 2)

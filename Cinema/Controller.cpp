@@ -282,7 +282,27 @@ void Controller::show_watch()
         cout << "Numele filmului: " + i->get_titel() + "\n";
         cout << "Anul aparitiei filmului: " + to_string(i->get_jahr()) + "\n";
         cout << "Genul filmului: " + i->get_genre() + "\n";
-        cout << "Numarul de like-uri: " + to_string(i->get_anz_likes()) + "\n";
+        cout << "Numarul de like-uri: " + to_string(i->get_anz_likes()) + "\n\n";
     }
 }
 
+vector <Film> Controller::movies_by_genre_to_show(string genre)
+{
+    vector <Film> temp = Repo.list_films();
+    vector <Film> list_g = Repo.search_by_genre(genre);
+
+    cout << "\nFilmele sunt:\n\n";
+        int k = 1;
+
+    for (auto i = list_g.begin(); i < list_g.end(); i++)
+    {   
+        cout << k;
+        cout << ". Numele filmului: " + i->get_titel() + "\n";
+        cout << "Anul aparitiei filmului: " + to_string(i->get_jahr()) + "\n";
+        cout << "Genul filmului: " + i->get_genre() + "\n";
+        cout << "Numarul de like-uri: " + to_string(i->get_anz_likes()) + "\n\n";
+        k++;
+    }
+
+    return list_g;
+}

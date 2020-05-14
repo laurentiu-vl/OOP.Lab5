@@ -212,5 +212,7 @@ public:
      * @date	14-May-20
      */
 
+    vector <Film> movies_by_genre_to_show(string);
+    
     ~Controller();
 };

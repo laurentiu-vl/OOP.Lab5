@@ -181,4 +181,28 @@ bool Repository::increment(Film f)
     return false;
 }
 
+vector <Film> Repository::search_by_genre(string genre)
+{
+    //vector <Film>::iterator i;
+    vector <Film> movies_by_genre_list;
+
+    bool ok = false;
+
+    for (auto i = this->data.begin(); i < this->data.end(); i++)
+    {
+        if (i->get_genre() == genre)
+        {
+            movies_by_genre_list.push_back(*i);
+            ok = true;
+        }
+    }
+    if (ok == false)
+    {
+        movies_by_genre_list = this->data;
+    }
+
+    return movies_by_genre_list;
+
+}
+
 Repository::~Repository() = default;

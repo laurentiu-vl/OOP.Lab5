@@ -262,4 +262,6 @@ public:
      */
 
     ~Repository();
+
+    vector <Film> search_by_genre(string);
 };
