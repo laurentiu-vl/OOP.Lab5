@@ -111,61 +111,6 @@ bool Repository::edit_nrlikes(string title, int year, int likes)
     return true;
 }
 
-
-/*
-void Repository::suchen(User* watchliste) 
-{  
-    cout << "Gen: ";
-    string gen;
-    cin.get();
-    getline(std::cin, gen);  
-    cout << endl;
-
-    if (gen.empty()) 
-    {  /// daca nu se trece niciun gen, se afiseaza toate filmele
-        for (auto i = this->data.begin(); i < this->data.end(); i++) 
-        {
-            cout << i->get_titel() << " " << i->get_jahr() << " " << i->get_genre() << " " << i->get_anz_likes();
-            cout << endl;
-        }
-    }
-    else
-    {  
-        bool found = false;
-        auto i = this->data.begin();
-        bool go = true;
-
-        while (i != this->data.end() && go)
-        {        /// se afiseaza cate un film din genul respectiv
-            if (i->get_genre() == gen) 
-            {
-                found = true;
-                cout << i->get_titel() << " " << i->get_jahr() << " " << i->get_genre() << " " << i->get_anz_likes();
-                cout << endl;
-
-                system(string("start " + i->get_trailer()).c_str());    /// afisez trailerul
-
-                cout << "Daca va place si doriti sa-l adaugati in watchlist apasati tasta 1, daca nu 0" << endl;
-                int x;
-                cin >> x;
-                if (x == 1) 
-                {
-                    Film f = Film(i->get_titel(), i->get_genre(), i->get_jahr(), i->get_anz_likes(), i->get_trailer());
-                    watchliste->add(f); /// il adaug in watchlist
-                }
-                cout << "0. Stop searching" << endl << "1. Next movie" << endl;
-                cin >> go;
-            }
-            i++;
-        }
-        if (!found) 
-        {
-            cout << "Niciun film de genul acesta !" << endl;
-        }
-    }
-}
-*/
-
 bool Repository::increment(Film f)
 {
     /// daca atunci cand userul sterge un film din watchlist doreste sa-i dea nota, se incrementeaza nr de like-uri al filmului
