@@ -46,17 +46,57 @@ namespace UnitTestCinema
 
 		}
 	};
-	
+
 	TEST_CLASS(UnitTestCinema)
 	{
 	public:
-		TEST_METHOD(get_film)
+		TEST_METHOD(add_to_repo)
 		{
+			Repository Controller;
+			Film f1 = Film("Seven", "Crime", 1995, 100, "https://www.youtube.com/watch?v=znmZoVkCjpI");
+			Film f2 = Film("Inception", "Sci-Fi", 2010, 1500, "https://www.youtube.com/watch?v=YoHD9XEInc0");
+			Film f3 = Film("Matrix", "Sci-Fi", 1999, 10000, "https://www.youtube.com/watch?v=m8e-FF8MsqU");
+			Film f4 = Film("Godfather", "Crime", 1972, 1000, "https://www.youtube.com/watch?v=sY1S34973zA");
+
+			Assert::AreEqual(Controller.add(f1), true);
+			Assert::AreEqual(Controller.add(f2), true);
+			Assert::AreEqual(Controller.add(f3), true);
+			Assert::AreEqual(Controller.add(f4), true);
+		}
+
+		TEST_METHOD(remv_to_repo)
+		{
+			Repository Controller;
+			Film f1 = Film("Seven", "Crime", 1995, 100, "https://www.youtube.com/watch?v=znmZoVkCjpI");
+			Film f2 = Film("Inception", "Sci-Fi", 2010, 1500, "https://www.youtube.com/watch?v=YoHD9XEInc0");
+
+			Assert::AreEqual(Controller.add(f1), true);
+			Assert::AreEqual(Controller.add(f2), true);
+
+			Assert::AreEqual(Controller.del(f1), true);
+			Assert::AreEqual(Controller.del(f2), true);
+		}
+
+		TEST_METHOD(like_to_movieinrepo)
+		{
+			Repository Controller;
+			
+			Film f1 = Film("Seven", "Crime", 1995, 100, "https://www.youtube.com/watch?v=znmZoVkCjpI");
+			Film f2 = Film("Inception", "Sci-Fi", 2010, 1500, "https://www.youtube.com/watch?v=YoHD9XEInc0");
+
+			Assert::AreEqual(Controller.add(f1), true);
+			Assert::AreEqual(Controller.add(f2), true);
+			
 			
 
-		};
+			Controller.increment(f1) == true;
+			Controller.increment(f2) == true;
 
-
+			Assert::AreEqual(f1.get_anz_likes(), 101);
+			Assert::AreEqual(f2.get_anz_likes(), 1501);
+	
+		}
+	};
 
 
 
