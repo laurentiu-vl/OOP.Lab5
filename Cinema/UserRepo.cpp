@@ -47,6 +47,7 @@ bool UserWatchlist::watchlist_delete(Film f1) /// deletes movie from watchlist
             return false;
         }
     }
+    return false;
 }
 
 vector <Film> UserWatchlist::watchlist_show() /// show watchlist
@@ -58,7 +59,7 @@ vector <Film> UserWatchlist::watchlist_show() /// show watchlist
     else
         for (auto i = this->watchlist.begin(); i < this->watchlist.end(); i++)
         {
-            cout << i->get_titel() << "t\Year: " << i->get_jahr() << "\tGenre: " << i->get_genre() << "\t" << i->get_anz_likes() << " likes";
+            cout << i->get_titel() << "\tYear: " << i->get_jahr() << "\tGenre: " << i->get_genre() << "\t" << i->get_anz_likes() << " likes";
             cout << endl;
             to_show.push_back(*i);
             

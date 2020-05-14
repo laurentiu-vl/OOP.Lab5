@@ -22,7 +22,7 @@ public:
 
     Film get_film(int);
 
-    int get_listesize() { return data.size(); }
+    int get_listesize() { return static_cast<int>(data.size()); }
 
     /**
      * @fn	    vector<Film> Repository::list_films();
@@ -80,7 +80,7 @@ public:
      *
      * @param [in,out]	parameter1	If non-null, the first parameter.
      */
-    bool suchen(User*);
+    //bool suchen(User*);
 
     /**
      * @fn	void Repository::increment(Film);
@@ -96,17 +96,17 @@ public:
 
     bool edit_valid(Film);
 
-    vector <Film>::iterator search_a_movie(Film);
+    vector <Film>::iterator search_a_movie(string title, int year);
 
-    bool edit_title(vector <Film>::iterator i, string title);
+    bool edit_title(string title, int year, string new_title);
 
-    bool edit_year(vector <Film>::iterator i, int year);
+    bool edit_year(string title, int year, int new_year);
 
-    bool edit_genre(vector <Film>::iterator i, string genre);
+    bool edit_genre(string title, int year, string genre);
 
-    bool edit_trailer(vector <Film>::iterator i, string trailer);
+    bool edit_trailer(string title, int year, string trailer);
 
-    bool edit_nrlikes(vector <Film>::iterator i, int likes);
+    bool edit_nrlikes(string title, int year, int likes);
     
     ~Repository();
 };

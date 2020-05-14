@@ -46,18 +46,18 @@ bool Repository::del(Film f)
             this->data.erase(i);
             return true;
         }
-        return false;
     }
+    return false;
 }
 
 
-vector <Film>::iterator Repository::search_a_movie(Film f)  /// cauta un film in repo
+vector <Film>::iterator Repository::search_a_movie(string title, int year)  /// cauta un film in repo
 {
     vector <Film>::iterator i;
 
     for (i = this->data.begin(); i < this->data.end(); i++)
     {
-        if (i->get_titel() == f.get_titel() && i->get_jahr() == f.get_jahr())
+        if (i->get_titel() == title && i->get_jahr() == year)
         {
             return i;
         }
@@ -65,39 +65,50 @@ vector <Film>::iterator Repository::search_a_movie(Film f)  /// cauta un film in
     return i;
 }
 
-bool Repository::edit_valid(Film f1)
+bool Repository::edit_title(string title, int year, string new_title)
 {
-    vector <Film>::iterator i = search_a_movie(f1);
+    auto i = search_a_movie(title, year);
+    if (i == this->data.end())
+        return false;
+    i->set_title(new_title);
+    return true;
 
-    if (i == data.end())
-        return false;   /// nu gaseste filmul in repo
-    else
+}
+
+bool Repository::edit_year(string title, int year, int new_year)
+{
+    auto i = search_a_movie(title, year);
+    if (i == this->data.end())
+        return false;
+    i->set_jahr(new_year);
     return true;
 }
 
-bool Repository::edit_title(vector <Film>::iterator i, string title)
+bool Repository::edit_genre(string title, int year, string genre)
 {
-    i->set_titel(title);
-}
-
-bool Repository::edit_year(vector <Film>::iterator i, int year)
-{
-    i->set_jahr(year);
-}
-
-bool Repository::edit_genre(vector <Film>::iterator i, string genre)
-{
+    auto i = search_a_movie(title, year);
+    if (i == this->data.end())
+        return false;
     i->set_genre(genre);
+    return true;
 }
 
-bool Repository::edit_trailer(vector <Film>::iterator i, string trailer)
+bool Repository::edit_trailer(string title, int year, string trailer)
 {
+    auto i = search_a_movie(title, year);
+    if (i == this->data.end())
+        return false;
     i->set_trailer(trailer);
+    return true;
 }
 
-bool Repository::edit_nrlikes(vector <Film>::iterator i, int likes)
+bool Repository::edit_nrlikes(string title, int year, int likes)
 {
+    auto i = search_a_movie(title, year);
+    if (i == this->data.end())
+        return false;
     i->set_anz_likes(likes);
+    return true;
 }
 
 //void Repository::edit(Film f) 
@@ -178,6 +189,7 @@ bool Repository::edit_nrlikes(vector <Film>::iterator i, int likes)
 //    }
 //}
 
+/*
 void Repository::suchen(User* watchliste) 
 {  
     cout << "Gen: ";
@@ -229,7 +241,7 @@ void Repository::suchen(User* watchliste)
         }
     }
 }
-
+*/
 
 bool Repository::increment(Film f)
 {
@@ -243,6 +255,7 @@ bool Repository::increment(Film f)
             //cout << "Numarul de like-uri a fost incrementat" << endl << endl;
         }
     }
+    return false;
 }
 
 Repository::~Repository() = default;

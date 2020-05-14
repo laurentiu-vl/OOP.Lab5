@@ -45,7 +45,7 @@ public:
      *
      * @param 	newtitle	The newtitle.
      */
-    void set_titel(string newtitle) { this->title = newtitle; };
+    void set_title(string newtitle) { this->title = newtitle; };
 
     /**
      * @fn	void Film::set_genre(string newgenre)

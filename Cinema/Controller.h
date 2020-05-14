@@ -20,6 +20,8 @@ public:
      * @author	Laurentiu
      * @date	04-May-20
      */
+    Controller();
+
     Controller(UserWatchlist UserRepo, Repository Repo);
 
     void list_films_admin();
@@ -28,7 +30,7 @@ public:
 
     void del_admin(Film f);
 
-    void edit_admin(Film f);
+    //void edit_admin(Film f);
 
     void add_to_watch(Film);
 
@@ -38,15 +40,15 @@ public:
 
     void likes_plus(Film);
 
-    bool edit_title_admin(Film f, string title);
+    void edit_title_admin(string title, int year, string new_title);
     
-    void edit_year_admin();
+    void edit_year_admin(string title, int year, int new_year);
 
-    void edit_genre_admin();
+    void edit_genre_admin(string title, int year, string genre);
 
-    void edit_trailer_admin();
+    void edit_trailer_admin(string title, int year, string trailer);
 
-    void edit_nrlikes_admin();
+    void edit_nrlikes_admin(string title, int year, int likes);
 
     ~Controller();
 };

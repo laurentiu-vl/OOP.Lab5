@@ -1,17 +1,17 @@
 #include "pch.h"
 #include "CppUnitTest.h"
 
-#include "../Cinema/Admin.h"
+#include "../Cinema/Repo.h"
 #include "../Cinema/Controller.h"
 #include "../Cinema/Film.h"
 //#include "../Cinema/UI.h"
-#include "../Cinema/User.h"
+#include "../Cinema/UserRepo.h"
 
-#include "../Cinema/Admin.cpp"
+#include "../Cinema/Repo.cpp"
 #include "../Cinema/Controller.cpp"
 #include "../Cinema/Film.cpp"
 //#include "../Cinema/UI.cpp"
-#include "../Cinema/User.cpp"
+#include "../Cinema/UserRepo.cpp"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 using namespace std;
@@ -35,7 +35,7 @@ namespace UnitTestCinema
 			film->set_anz_likes(100);
 			film->set_genre("Action");
 			film->set_jahr(2019);
-			film->set_titel("Seven");
+			film->set_title("Seven");
 			film->set_trailer("come.com");
 
 			Assert::AreEqual(string("Seven"), film->get_titel());

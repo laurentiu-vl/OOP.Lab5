@@ -9,6 +9,8 @@ Controller::Controller(UserWatchlist UserRepo, Repository Repo)
      this->Repo = Repo;
 }
 
+Controller::Controller() = default;
+
 Controller::~Controller() = default;
 
 /*
@@ -122,47 +124,51 @@ void Controller::likes_plus(Film f1)
     }
 }
 
-bool Controller::edit_title_admin(Film f, string title)
+
+void Controller::edit_title_admin(string title, int year, string new_title)
 {
-    vector <Film>::iterator i = Repo.search_a_movie(f);
-    if (i == Repo.data.end())
-        return false;
+    bool succes = this->Repo.edit_title(title, year, new_title);
+    if (succes)
+        cout << "Titlul filmului a fost modificat cu succes\n";
     else
-        this->Repo.edit_title(i, title);
-    return true;
+        cout << "Filmul nu a putut fi identificat in lista cu filme";
 }
 
-void Controller::edit_year_admin(Film f, int year)
+void Controller::edit_year_admin(string title, int year, int new_year)
 {
-    vector <Film>::iterator i = search_a_movie(f);
-    if (i == data.end())
-        return false;
+    bool succes = this->Repo.edit_year(title, year, new_year);
+    if (succes)
+        cout << "Anul filmului a fost modificat cu succes\n";
     else
-        this->Repo.edit_title(i, title);
-    return true;
-
-
+        cout << "Filmul nu a putut fi identificat in lista cu filme";
 }
 
-void Controller::edit_genre_admin(Film f)
+void Controller::edit_genre_admin(string title, int year, string genre)
 {
-
-
+    bool succes = this->Repo.edit_genre(title, year, genre);
+    if (succes)
+        cout << "Genul filmului a fost modificat cu succes\n";
+    else
+        cout << "Filmul nu a putut fi identificat in lista cu filme";
 }
 
-void Controller::edit_trailer_admin(Film f)
+void Controller::edit_trailer_admin(string title, int year, string trailer)
 {
-
-
+    bool succes = this->Repo.edit_trailer(title, year, trailer);
+    if (succes)
+        cout << "Trailerul filmului a fost modificat cu succes\n";
+    else
+        cout << "Filmul nu a putut fi identificat in lista cu filme";
 }
 
-void Controller::edit_nrlikes_admin(Film f)
+void Controller::edit_nrlikes_admin(string title, int year, int likes)
 {
-
-
+    bool succes = this->Repo.edit_nrlikes(title, year, likes);
+    if (succes)
+        cout << "Numarul de like-uri ale filmului a fost modificat cu succes\n";
+    else
+        cout << "Filmul nu a putut fi identificat in lista cu filme";
 }
-
-
 
 //void Controller::edit_admin(Film f) 
 //{  

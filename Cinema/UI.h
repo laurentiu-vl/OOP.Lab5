@@ -1,6 +1,7 @@
 #include <iostream>
+#include "Controller.h"
 
-class UI: public Controller
+class UI : private Controller
 {
 public:
 
