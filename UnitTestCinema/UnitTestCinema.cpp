@@ -81,37 +81,27 @@ namespace UnitTestCinema
 		{
 			Repository Controller;
 			
+			
 			Film f1 = Film("Seven", "Crime", 1995, 100, "https://www.youtube.com/watch?v=znmZoVkCjpI");
 			Film f2 = Film("Inception", "Sci-Fi", 2010, 1500, "https://www.youtube.com/watch?v=YoHD9XEInc0");
 
+			//Assert::AreEqual(Controller.add(f1), true);
+			//Assert::AreEqual(Controller.add(f2), true);
+			//
+			//Controller.add(f1);
+			//Controller.add(f2);
+
+			Assert::AreEqual(Controller.increment(f1), false);
+			Assert::AreEqual(Controller.increment(f2), false);
+			
 			Assert::AreEqual(Controller.add(f1), true);
 			Assert::AreEqual(Controller.add(f2), true);
-			
-			
 
-			Controller.increment(f1) == true;
-			Controller.increment(f2) == true;
+			Assert::AreEqual(Controller.increment(f1), true);
+			Assert::AreEqual(Controller.increment(f2), true);
 
-			Assert::AreEqual(f1.get_anz_likes(), 101);
-			Assert::AreEqual(f2.get_anz_likes(), 1501);
-	
 		}
 	};
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 	//TEST_CLASS(AdminTest)
