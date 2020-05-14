@@ -87,6 +87,7 @@ void UI::program()
                             int nrf;
                             cin >> nrf;
                             controller.add_to_watch(genre_ff[nrf - 1]);
+
                         }
                         else if (opt2 == 0)
                         {
@@ -99,10 +100,10 @@ void UI::program()
                             int nrf;
                             cin >> nrf;
                             controller.likes_plus(genre_ff[nrf - 1]);
+                         
                         }
                     }
 
-                    //controller.suchen();
                 }
                 else if (u == 2)
                 {

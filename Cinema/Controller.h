@@ -5,7 +5,7 @@
 
 class Controller
 {
-private: 
+protected: 
     /** @brief	The user repo */
     UserWatchlist UserRepo;
 
