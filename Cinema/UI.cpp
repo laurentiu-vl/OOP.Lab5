@@ -40,17 +40,18 @@ void UI::program()
     int opt = -1;
     while (opt)
     {
-        cout << "\n0. Exit\n" 
+        cout<< "\n0. Exit\n" 
             << "1. User Menu\n" 
             << "2. Admin Menu\n\n"
             << "Enter Option: ";
         cin >> opt;
+
         if (opt == 1)
         {
             int u = -1;
             while (u)
             {
-                cout << "\n\n~USER MENU~\n\n"
+                cout<< "\n\n~USER MENU~\n\n"
                     << "0. Back\n"
                     << "1. Search by genre\n"
                     << "2. Show watchlist\n"
@@ -58,6 +59,7 @@ void UI::program()
                     << "4. Add movie to watchlist\n\n"
                     << "Option: ";
                 cin >> u;
+
                 if (u == 0)
                 {
                     break;
@@ -77,10 +79,12 @@ void UI::program()
                     {
                         cout << "1. Add movie to watchlist\n"
                              << "2. I like the movie \n"
+                             << "3. I want to see the trailer\n"
                              << "0. Back\n\n";
 
                         cout << "Optiune: ";
-                        cin >> opt2;
+                        cin  >> opt2;
+
                         if (opt2 == 1)
                         {
                             cout << "\nChoose the number of the movie: ";
@@ -89,7 +93,7 @@ void UI::program()
                             controller.add_to_watch(genre_ff[nrf - 1]);
 
                         }
-                        else if (opt2 == 0)
+                        if (opt2 == 0)
                         {
                             break;
                         }
@@ -99,6 +103,7 @@ void UI::program()
                             cout << "\nChoose the number of the movie: ";
                             int nrf;
                             cin >> nrf;
+
                             controller.likes_plus(genre_ff[nrf - 1]);
                          
                         }
@@ -120,6 +125,7 @@ void UI::program()
                     cout << "Number of likes: "; cin >> nrlikes;
                     cout << endl;
                     Film f = Film(title, genre, year, nrlikes, trailer);
+
                     controller.delete_from_watch(f);
                 }
                 else if (u == 4)
@@ -133,6 +139,7 @@ void UI::program()
                     cout << "Number of likes: "; cin >> nrlikes;
                     cout << endl;
                     Film f = Film(title, genre, year, nrlikes, trailer);
+
                     controller.add_to_watch(f);
                 }
                 else
@@ -160,7 +167,7 @@ void UI::program()
                     break;
 
                 }
-                else if(a == 1)
+                else if (a == 1)
                 {
                     string title, genre, trailer;
                     int year, nrlikes;
@@ -177,6 +184,7 @@ void UI::program()
                     cout << "Number of likes: "; cin >> nrlikes;
                     cout << endl;
                     Film f = Film(title, genre, year, nrlikes, trailer);
+
                     if (controller.add_admin(f) == false)
                         cout << "Filmul exista deja in lista" << endl << endl << "\n";
                     else
@@ -184,7 +192,7 @@ void UI::program()
 
 
 			    }
-                else if(a == 2)
+                else if (a == 2)
                 {
                     string title, genre, trailer;
                     int year, nrlikes;
@@ -196,7 +204,7 @@ void UI::program()
                     Film f = Film(title, genre, year, nrlikes, trailer);
                     controller.del_admin(f);
                 }
-                else if(a == 3)
+                else if (a == 3)
                 {
                     string title;
                     int year;
@@ -265,7 +273,7 @@ void UI::program()
                         }
                     }
 			    }
-                else if(a == 4)
+                else if (a == 4)
                 {
                 cout << "\n";
                     controller.list_films_admin();
