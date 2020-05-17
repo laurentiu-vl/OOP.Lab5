@@ -41,21 +41,6 @@ public:
     bool watchlist_delete(Film);
 
     /**
-     * @fn	vector <Film> UserWatchlist::watchlist_search(Film);
-     *
-     * @brief	Watchlist search
-     *
-     * @author	Laurentiu
-     * @date	14-May-20
-     *
-     * @param 	parameter1	The first parameter.
-     *
-     * @returns	A vector.
-     */
-
-    vector <Film> watchlist_search(Film);
-
-    /**
      * @fn	vector <Film> UserWatchlist::watchlist_show();
      *
      * @brief	Watchlist show
@@ -67,8 +52,6 @@ public:
      */
 
     vector <Film> watchlist_show();
-
- 
 
     //~UserController();
 };
