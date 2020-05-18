@@ -85,28 +85,80 @@ void UI::program()
                         cout << "Optiune: ";
                         cin  >> opt2;
 
-                        if (opt2 == 1)
-                        {
-                            cout << "\nChoose the number of the movie: ";
-                            int nrf;
-                            cin >> nrf;
-                            controller.add_to_watch(genre_ff[nrf - 1]);
-
-                        }
                         if (opt2 == 0)
                         {
                             break;
                         }
-
-                        if (opt2 == 2)
+                        else if (opt2 == 1)
                         {
                             cout << "\nChoose the number of the movie: ";
                             int nrf;
-                            cin >> nrf;
+                            while (1)
+                            {
+                                cin >> nrf;
+                                if (cin.fail() || nrf < 1 || nrf > static_cast<int>(genre_ff.size()))
+                                    cout << "Invalid input! Choose a movie number from the given list! Try again as many times as you need!\n";
+                                while (cin.fail() || nrf < 1 || nrf > static_cast<int>(genre_ff.size()))
+                                {
+                                    cin.clear();
+                                    cin.ignore();
+                                    cin >> nrf;
+                                }
+                                if (!cin.fail() && nrf >= 1 && nrf <= static_cast<int>(genre_ff.size()))
+                                {
+                                    break;
+                                }
+                            }
+                            controller.add_to_watch(genre_ff[nrf - 1]);
 
-                            controller.likes_plus(genre_ff[nrf - 1]);
-                         
                         }
+                        else if (opt2 == 2)
+                        {
+                            cout << "\nChoose the number of the movie: ";
+                            int nrf;
+                            while (1)
+                            {
+                                cin >> nrf;
+                                if (cin.fail() || nrf < 1 || nrf > static_cast<int>(genre_ff.size()))
+                                    cout << "Invalid input! Choose a movie number from the given list! Try again as many times as you need!\n";
+                                while (cin.fail() || nrf < 1 || nrf > static_cast<int>(genre_ff.size()))
+                                {
+                                    cin.clear();
+                                    cin.ignore();
+                                    cin >> nrf;
+                                }
+                                if (!cin.fail() && nrf >= 1 && nrf <= static_cast<int>(genre_ff.size()))
+                                {
+                                    break;
+                                }
+                            }
+                            controller.likes_plus(genre_ff[nrf - 1]);
+
+                        }
+                        else if (opt2 == 3)
+                        {
+                            cout << "\nChoose the number of the movie: ";
+                            int nrf;
+                            while (1)
+                            {
+                                cin >> nrf;
+                                if (cin.fail() || nrf < 1 || nrf > static_cast<int>(genre_ff.size()))
+                                    cout << "Invalid input! Choose a movie number from the given list! Try again as many times as you need!\n";
+                                while (cin.fail() || nrf < 1 || nrf > static_cast<int>(genre_ff.size()))
+                                {
+                                    cin.clear();
+                                    cin.ignore();
+                                    cin >> nrf;
+                                }
+                                if (!cin.fail() && nrf >= 1 && nrf <= static_cast<int>(genre_ff.size()))
+                                {
+                                    break;
+                                }
+                            }
+                            cout << genre_ff[nrf - 1].get_trailer() << endl;
+                        }
+                        else
+                            cout << "Invalid input! Choose a number between 0-3!";
                     }
 
                 }
@@ -118,28 +170,144 @@ void UI::program()
                 else if (u == 3)
                 {
                     string title, genre, trailer;
-                    int year, nrlikes;
+                    int year;
                     cout << "Title: "; cin >> title;
-                    cout << "Genre: "; cin >> genre;
-                    cout << "Year: "; cin >> year;
-                    cout << "Number of likes: "; cin >> nrlikes;
-                    cout << endl;
-                    Film f = Film(title, genre, year, nrlikes, trailer);
+                    while (cin.fail())
+                    {
+                        if (cin.fail())
+                            cout << "Invalid input! Please input a positive integer! Try again as many times as you need!\n";
+                        while (cin.fail())
+                        {
+                            cin.clear();
+                            cin.ignore();
+                            cin >> title;
+                        }
+                        if (!cin.fail())
+                        {
+                            cout << "Finally succesful!\n";
+                            break;
+                        }
+                    }
 
+                    cout << "Year: "; cin >> year;
+                    while (cin.fail() || year < 0)
+                    {
+                        if (cin.fail() || year < 0)
+                            cout << "Invalid input! Please input a positive integer! Try again as many times as you need!\n";
+                        while (cin.fail() || year < 0)
+                        {
+                            cin.clear();
+                            cin.ignore();
+                            cin >> year;
+                        }
+                        if (!cin.fail() || year >= 0)
+                        {
+                            cout << "Finally succesful!\n";
+                            break;
+                        }
+                    }
+                    cout << endl;
+
+                    Film f = Film(title, genre, year, 0, trailer);
                     controller.delete_from_watch(f);
                 }
                 else if (u == 4)
                 {
                     string title, genre, trailer;
                     int year, nrlikes;
-                    cout << "Title: ";
-                     cin >> title;
-                    cout << "Genre: "; cin >> genre;
-                    cout << "Year: "; cin >> year;
-                    cout << "Number of likes: "; cin >> nrlikes;
-                    cout << endl;
-                    Film f = Film(title, genre, year, nrlikes, trailer);
 
+                    cout << "Title: "; cin >> title;
+                    while (cin.fail())
+                    {
+                        if (cin.fail())
+                            cout << "Invalid input! Please input a positive integer! Try again as many times as you need!\n";
+                        while (cin.fail())
+                        {
+                            cin.clear();
+                            cin.ignore();
+                            cin >> title;
+                        }
+                        if (!cin.fail())
+                        {
+                            cout << "Finally succesful!\n";
+                            break;
+                        }
+                    }
+
+                    cout << "Genre: "; cin >> genre;
+                    while (cin.fail())
+                    {
+                        if (cin.fail())
+                            cout << "Invalid input! Please input a positive integer! Try again as many times as you need!\n";
+                        while (cin.fail())
+                        {
+                            cin.clear();
+                            cin.ignore();
+                            cin >> genre;
+                        }
+                        if (!cin.fail())
+                        {
+                            cout << "Finally succesful!\n";
+                            break;
+                        }
+                    }
+
+                    cout << "Year: "; cin >> year;
+                    while (cin.fail() || year < 0)
+                    {
+                        if (cin.fail() || year < 0)
+                            cout << "Invalid input! Please input a positive integer! Try again as many times as you need!\n";
+                        while (cin.fail() || year < 0)
+                        {
+                            cin.clear();
+                            cin.ignore();
+                            cin >> year;
+                        }
+                        if (!cin.fail() || year >= 0)
+                        {
+                            cout << "Finally succesful!\n";
+                            break;
+                        }
+                    }
+
+                    cout << "Number of likes: "; cin >> nrlikes;
+                    while (cin.fail() || nrlikes < 0)
+                    {
+                        if (cin.fail() || nrlikes < 0)
+                            cout << "Invalid input! Please input a positive integer! Try again as many times as you need!\n";
+                        while (cin.fail() || nrlikes < 0)
+                        {
+                            cin.clear();
+                            cin.ignore();
+                            cin >> nrlikes;
+                        }
+                        if (!cin.fail() || nrlikes >= 0)
+                        {
+                            cout << "Finally succesful!\n";
+                            break;
+                        }
+                    }
+
+                    cout << "Trailer: "; cin >> trailer;
+                    while (cin.fail())
+                    {
+                        if (cin.fail())
+                            cout << "Invalid input! Please input a positive integer! Try again as many times as you need!\n";
+                        while (cin.fail())
+                        {
+                            cin.clear();
+                            cin.ignore();
+                            cin >> trailer;
+                        }
+                        if (!cin.fail())
+                        {
+                            cout << "Finally succesful!\n";
+                            break;
+                        }
+                    }
+                    cout << endl;
+
+                    Film f = Film(title, genre, year, nrlikes, trailer);
                     controller.add_to_watch(f);
                 }
                 else
@@ -171,22 +339,101 @@ void UI::program()
                 {
                     string title, genre, trailer;
                     int year, nrlikes;
+
                     cout << "Title: "; cin >> title;
-                    /*
-                    while(cin.fail())
+                    while (cin.fail())
                     {
-                        cout << "Invalid input! Please input a string!\n";
-                        cin >> title;
-			        }
-                    */
+                        if (cin.fail())
+                            cout << "Invalid input! Please input a positive integer! Try again as many times as you need!\n";
+                        while (cin.fail())
+                        {
+                            cin.clear();
+                            cin.ignore();
+                            cin >> title;
+                        }
+                        if (!cin.fail())
+                        {
+                            cout << "Finally succesful!\n";
+                            break;
+                        }
+                    }
+
                     cout << "Genre: "; cin >> genre;
+                    while (cin.fail())
+                    {
+                        if (cin.fail())
+                            cout << "Invalid input! Please input a positive integer! Try again as many times as you need!\n";
+                        while (cin.fail())
+                        {
+                            cin.clear();
+                            cin.ignore();
+                            cin >> genre;
+                        }
+                        if (!cin.fail())
+                        {
+                            cout << "Finally succesful!\n";
+                            break;
+                        }
+                    }
+
                     cout << "Year: "; cin >> year;
+                    while (cin.fail() || year < 0)
+                    {
+                        if (cin.fail() || year < 0)
+                            cout << "Invalid input! Please input a positive integer! Try again as many times as you need!\n";
+                        while (cin.fail() || year < 0)
+                        {
+                            cin.clear();
+                            cin.ignore();
+                            cin >> year;
+                        }
+                        if (!cin.fail() || year >= 0)
+                        {
+                            cout << "Finally succesful!\n";
+                            break;
+                        }
+                    }
+
                     cout << "Number of likes: "; cin >> nrlikes;
+                    while (cin.fail() || nrlikes < 0)
+                    {
+                        if (cin.fail() || nrlikes < 0)
+                            cout << "Invalid input! Please input a positive integer! Try again as many times as you need!\n";
+                        while (cin.fail() || nrlikes < 0)
+                        {
+                            cin.clear();
+                            cin.ignore();
+                            cin >> nrlikes;
+                        }
+                        if (!cin.fail() || nrlikes >= 0)
+                        {
+                            cout << "Finally succesful!\n";
+                            break;
+                        }
+                    }
+                    
+                    cout << "Trailer: "; cin >> trailer;
+                    while (cin.fail())
+                    {
+                        if (cin.fail())
+                            cout << "Invalid input! Please input a positive integer! Try again as many times as you need!\n";
+                        while (cin.fail())
+                        {
+                            cin.clear();
+                            cin.ignore();
+                            cin >> trailer;
+                        }
+                        if (!cin.fail())
+                        {
+                            cout << "Finally succesful!\n";
+                            break;
+                        }
+                    }
                     cout << endl;
                     Film f = Film(title, genre, year, nrlikes, trailer);
 
                     if (controller.add_admin(f) == false)
-                        cout << "Filmul exista deja in lista" << endl << endl << "\n";
+                        cout << "Filmul exista deja in lista" << endl << "\n";
                     else
                         cout << "Film adaugat" << endl << "\n";
 
@@ -195,21 +442,88 @@ void UI::program()
                 else if (a == 2)
                 {
                     string title, genre, trailer;
-                    int year, nrlikes;
+                    int year;
+
                     cout << "Title: "; cin >> title;
-                    cout << "Genre: "; cin >> genre;
+                    while (cin.fail())
+                    {
+                        if (cin.fail())
+                            cout << "Invalid input! Please input a positive integer! Try again as many times as you need!\n";
+                        while (cin.fail())
+                        {
+                            cin.clear();
+                            cin.ignore();
+                            cin >> title;
+                        }
+                        if (!cin.fail())
+                        {
+                            cout << "Finally succesful!\n";
+                            break;
+                        }
+                    }
+
                     cout << "Year: "; cin >> year;
-                    cout << "Number of likes: "; cin >> nrlikes;
+                    while (cin.fail() || year < 0)
+                    {
+                        if (cin.fail() || year < 0)
+                            cout << "Invalid input! Please input a positive integer! Try again as many times as you need!\n";
+                        while (cin.fail() || year < 0)
+                        {
+                            cin.clear();
+                            cin.ignore();
+                            cin >> year;
+                        }
+                        if (!cin.fail() || year >= 0)
+                        {
+                            cout << "Finally succesful!\n";
+                            break;
+                        }
+                    }
                     cout << endl;
-                    Film f = Film(title, genre, year, nrlikes, trailer);
+                    Film f = Film(title, genre, year, 0, trailer);
                     controller.del_admin(f);
                 }
                 else if (a == 3)
                 {
                     string title;
                     int year;
+
                     cout << "Title: "; cin >> title;
+                    while (cin.fail())
+                    {
+                        if (cin.fail())
+                            cout << "Invalid input! Please input a positive integer! Try again as many times as you need!\n";
+                        while (cin.fail())
+                        {
+                            cin.clear();
+                            cin.ignore();
+                            cin >> title;
+                        }
+                        if (!cin.fail())
+                        {
+                            cout << "Finally succesful!\n";
+                            break;
+                        }
+                    }
+
                     cout << "Year: "; cin >> year;
+                    while (cin.fail() || year < 0)
+                    {
+                        if (cin.fail() || year < 0)
+                            cout << "Invalid input! Please input a positive integer! Try again as many times as you need!\n";
+                        while (cin.fail() || year < 0)
+                        {
+                            cin.clear();
+                            cin.ignore();
+                            cin >> year;
+                        }
+                        if (!cin.fail() || year >= 0)
+                        {
+                            cout << "Finally succesful!\n";
+                            break;
+                        }
+                    }
+                    cout << endl;
                     int edit_op = -1;
                     while (edit_op != 0)
                     {
@@ -230,40 +544,115 @@ void UI::program()
                         else if (edit_op == 1)
                         {
                             string new_title;
-                            cout << "New Title: ";
-                            cin >> new_title;
+                            cout << "New Title: "; cin >> new_title;
+                            while (cin.fail())
+                            {
+                                if (cin.fail())
+                                    cout << "Invalid input! Please input a positive integer! Try again as many times as you need!\n";
+                                while (cin.fail())
+                                {
+                                    cin.clear();
+                                    cin.ignore();
+                                    cin >> new_title;
+                                }
+                                if (!cin.fail())
+                                {
+                                    cout << "Finally succesful!\n";
+                                    break;
+                                }
+                            }
                             controller.edit_title_admin(title, year, new_title);
                             break;
                         }
                         else if (edit_op == 2)
                         {
                             string new_genre;
-                            cout << "New Genre:";
-                            cin >> new_genre;
+                            cout << "New Genre:"; cin >> new_genre;
+                            while (cin.fail())
+                            {
+                                if (cin.fail())
+                                    cout << "Invalid input! Please input a positive integer! Try again as many times as you need!\n";
+                                while (cin.fail())
+                                {
+                                    cin.clear();
+                                    cin.ignore();
+                                    cin >> new_genre;
+                                }
+                                if (!cin.fail())
+                                {
+                                    cout << "Finally succesful!\n";
+                                    break;
+                                }
+                            }
                             controller.edit_genre_admin(title, year, new_genre);
                             break;
                         }
                         else if (edit_op == 3)
                         {
                             int new_year;
-                            cout << "New Year: ";
-                            cin >> new_year;
+                            cout << "New Year: "; cin >> new_year;
+                            while (cin.fail() || new_year < 0)
+                            {
+                                if (cin.fail() || new_year < 0)
+                                    cout << "Invalid input! Please input a positive integer! Try again as many times as you need!\n";
+                                while (cin.fail() || new_year < 0)
+                                {
+                                    cin.clear();
+                                    cin.ignore();
+                                    cin >> new_year;
+                                }
+                                if (!cin.fail() || new_year >= 0)
+                                {
+                                    cout << "Finally succesful!\n";
+                                    break;
+                                }
+                            }
                             controller.edit_year_admin(title, year, new_year);
                             break;
                         }
                         else if (edit_op == 4)
                         {
                             int new_likes;
-                            cout << "New Number of Likes: ";
-                            cin >> new_likes;
+                            cout << "New Number of Likes: "; cin >> new_likes;
+                            while (cin.fail() || new_likes < 0)
+                            {
+                                if (cin.fail() || new_likes < 0)
+                                    cout << "Invalid input! Please input a positive integer! Try again as many times as you need!\n";
+                                while (cin.fail() || new_likes < 0)
+                                {
+                                    cin.clear();
+                                    cin.ignore();
+                                    cin >> new_likes;
+                                }
+                                if (!cin.fail() || new_likes >= 0)
+                                {
+                                    cout << "Finally succesful!\n";
+                                    break;
+                                }
+                            }
                             controller.edit_nrlikes_admin(title, year, new_likes);
                             break;
                         }
                         else if (edit_op == 5)
                         {
                             string new_trailer;
-                            cout << "New Trailer: ";
-                            cin >> new_trailer;
+                            cout << "New Trailer: "; cin >> new_trailer;
+                            while (cin.fail())
+                            {
+                                if (cin.fail())
+                                    cout << "Invalid input! Please input a positive integer! Try again as many times as you need!\n";
+                                while (cin.fail())
+                                {
+                                    cin.clear();
+                                    cin.ignore();
+                                    cin >> new_trailer;
+                                }
+                                if (!cin.fail())
+                                {
+                                    cout << "Finally succesful!\n";
+                                    break;
+                                }
+                            }
                             controller.edit_trailer_admin(title, year, new_trailer);
                             break;
                         }
@@ -275,9 +664,8 @@ void UI::program()
 			    }
                 else if (a == 4)
                 {
-                cout << "\n";
+                    cout << "\n";
                     controller.list_films_admin();
-                    
                 }
                 else
                 {
