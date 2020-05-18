@@ -13,7 +13,7 @@ Film Repository::get_film(int i)
     return data[i];
 }
 
-vector<Film> Repository::list_films()
+vector<Film> Repository::get_all_films()
 { 
     vector<Film> liste_films = {};
     for (auto i = this->data.begin(); i < this->data.end(); i++) 
@@ -111,7 +111,7 @@ bool Repository::edit_nrlikes(string title, int year, int likes)
     return true;
 }
 
-bool Repository::increment(Film f)
+bool Repository::increment_likes(Film f)
 {
     /// daca atunci cand userul sterge un film din watchlist doreste sa-i dea nota, se incrementeaza nr de like-uri al filmului
     for (auto i = this->data.begin(); i < this->data.end(); i++)

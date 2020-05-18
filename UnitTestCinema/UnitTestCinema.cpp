@@ -89,10 +89,10 @@ namespace UnitTestCinema
 			Assert::AreEqual(vectorfilm.add(f1), true);
 			Assert::AreEqual(vectorfilm.add(f2), true);
 
-			Assert::AreEqual(vectorfilm.increment(f1), true);
-			vectorfilm.increment(f1);
+			Assert::AreEqual(vectorfilm.increment_likes(f1), true);
+			vectorfilm.increment_likes(f1);
 			
-			Assert::AreEqual(vectorfilm.increment(f2), true);
+			Assert::AreEqual(vectorfilm.increment_likes(f2), true);
 			
 			Assert::AreEqual(vectorfilm.get_film(0).get_anz_likes(), 102);	// de la 100
 			Assert::AreEqual(vectorfilm.get_film(1).get_anz_likes(), 1501);			
@@ -185,7 +185,7 @@ namespace UnitTestCinema
 			vector_films_expected.push_back(f3);
 			vector_films_expected.push_back(f4);
 
-			auto list_films_temp = Repo.list_films();
+			auto list_films_temp = Repo.get_all_films();
 			for (auto i = 0; i < vector_films_expected.size(); i++)
 			{
 				Assert::AreEqual(vector_films_expected[i] == list_films_temp[i], true);

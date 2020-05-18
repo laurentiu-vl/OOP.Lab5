@@ -24,7 +24,7 @@ bool Controller::add_admin(Film f)
 
 void Controller::list_films_admin()
 {
-    vector<Film> temp = this->Repo.list_films();
+    vector<Film> temp = this->Repo.get_all_films();
     for (auto i = temp.begin(); i < temp.end(); i++)
     {
         cout << i->get_titel() << "\tYear: " << i->get_jahr() << "\tGenre: " << i->get_genre() << "\t" << i->get_anz_likes() << " likes";
@@ -43,7 +43,7 @@ void Controller::del_admin(Film f)
 
 void Controller::likes_plus(Film f1)
 {
-    if (this->Repo.increment(f1) == true)
+    if (this->Repo.increment_likes(f1) == true)
     {
         cout << "Numarul de like-uri a fost incrementat" << endl << endl;
     }
@@ -133,7 +133,7 @@ void Controller::show_watch()
 
 vector <Film> Controller::movies_by_genre_to_show(string genre)
 {
-    vector <Film> temp = Repo.list_films();
+    vector <Film> temp = Repo.get_all_films();
     vector <Film> list_g = Repo.search_by_genre(genre);
 
     cout << "\nFilmele sunt:\n\n";

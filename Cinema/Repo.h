@@ -9,6 +9,20 @@ private:
     /** @brief	/ baza de date cu toate filmele */
     vector<Film> data;
 
+
+    /**
+    * @fn	int Repository::get_listesize()
+    *
+    * @brief	Gets the listesize
+    *
+    * @author	Laurentiu
+    * @date	14-May-20
+    *
+    * @returns	The listesize.
+    */
+
+    int get_listesize() { return static_cast<int>(data.size()); }
+
 public:    
 
     /**
@@ -23,32 +37,20 @@ public:
     Repository();
 
     /**
-     * @fn	Film Repository::get_film(int);
-     *
-     * @brief	Gets a film
-     *
-     * @author	Laurentiu
-     * @date	14-May-20
-     *
-     * @param 	parameter1	The first parameter.
-     *
-     * @returns	The film.
-     */
+    * @fn	Film Repository::get_film(int);
+    *
+    * @brief	Gets a film
+    *
+    * @author	Laurentiu
+    * @date	14-May-20
+    *
+    * @param 	parameter1	The first parameter.
+    *
+    * @returns	The film.
+    */
+
 
     Film get_film(int);
-
-    /**
-     * @fn	int Repository::get_listesize()
-     *
-     * @brief	Gets the listesize
-     *
-     * @author	Laurentiu
-     * @date	14-May-20
-     *
-     * @returns	The listesize.
-     */
-
-    int get_listesize() { return static_cast<int>(data.size()); }
 
     /**
      * @fn	vector<Film> Repository::list_films();
@@ -61,7 +63,7 @@ public:
      * @returns	A vector&lt;Film&gt;
      */
 
-    vector<Film> list_films();
+    vector<Film> get_all_films();
 
     /**
      * @fn	bool Repository::add(Film);
@@ -106,7 +108,7 @@ public:
      * @returns	True if it succeeds, false if it fails.
      */
 
-    bool edit(Film);
+    //bool edit(Film);
 
     /**
      * @fn	void Repository::suchen(User*);
@@ -122,7 +124,7 @@ public:
      //bool suchen(User*);
 
     /**
-     * @fn	bool Repository::increment(Film);
+     * @fn	bool Repository::increment_likes(Film);
      *
      * @brief	Increments the given parameter 1 (nrlikes)
      *
@@ -134,7 +136,7 @@ public:
      * @returns	True if it succeeds, false if it fails.
      */
 
-    bool increment(Film);   
+    bool increment_likes(Film);   
 
     /**
      * @fn	bool Repository::edit_valid(Film);
@@ -149,7 +151,7 @@ public:
      * @returns	True if it succeeds, false if it fails.
      */
 
-    bool edit_valid(Film);
+   // bool edit_valid(Film);
 
     /**
      * @fn	vector <Film>::iterator Repository::search_a_movie(string title, int year);
