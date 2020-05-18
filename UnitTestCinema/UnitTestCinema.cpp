@@ -22,7 +22,7 @@ namespace UnitTestCinema
 	{
 	public:
 
-		TEST_METHOD(Constructor)
+		TEST_METHOD(Constructor_WITH_Setters_AND_Getters)
 		{
 			auto film = new Film("Six", "Comedy", 2017, 320, "viki.com");
 
@@ -79,7 +79,7 @@ namespace UnitTestCinema
 			Assert::AreEqual(Controller.del(f2), true);
 		}
 
-		TEST_METHOD(like_to_movieinrepo_si_get_film)
+		TEST_METHOD(like_to_movieinrepo_AND_get_film)
 		{
 			Repository vectorfilm;
 			
@@ -164,6 +164,34 @@ namespace UnitTestCinema
 			vectorfilm.edit_nrlikes("Seven", 1995, 200);
 			Assert::AreEqual(vectorfilm.get_film(0).get_anz_likes(), 200);
 		}
+
+		TEST_METHOD(list_films)
+		{
+			Repository Repo;
+			Film f1 = Film("Seven", "Crime", 1995, 100, "https://www.youtube.com/watch?v=znmZoVkCjpI");
+			Film f2 = Film("Inception", "Sci-Fi", 2010, 1500, "https://www.youtube.com/watch?v=YoHD9XEInc0");
+			Film f3 = Film("Matrix", "Sci-Fi", 1999, 10000, "https://www.youtube.com/watch?v=m8e-FF8MsqU");
+			Film f4 = Film("Godfather", "Crime", 1972, 1000, "https://www.youtube.com/watch?v=sY1S34973zA");
+
+			Assert::AreEqual(Repo.add(f1), true);
+			Assert::AreEqual(Repo.add(f2), true);
+			Assert::AreEqual(Repo.add(f3), true);
+			Assert::AreEqual(Repo.add(f4), true);
+
+			vector<Film> vector_films_expected;
+
+			vector_films_expected.push_back(f1);
+			vector_films_expected.push_back(f2);
+			vector_films_expected.push_back(f3);
+			vector_films_expected.push_back(f4);
+
+			auto list_films_temp = Repo.list_films();
+			for (auto i = 0; i < vector_films_expected.size(); i++)
+			{
+				Assert::AreEqual(vector_films_expected[i] == list_films_temp[i], true);
+			}
+		}
+
 		TEST_METHOD(addwish)
 		{
 			UserWatchlist vectortowatch;
@@ -192,8 +220,27 @@ namespace UnitTestCinema
 			Assert::AreEqual(vectortowatch.watchlist_delete(f2), false);
 
 		}
+		TEST_METHOD(watchlist_show)
+		{
+			UserWatchlist vectortowatch;
 
+			Film f1 = Film("Seven", "Crime", 1995, 100, "https://www.youtube.com/watch?v=znmZoVkCjpI");
+			Film f2 = Film("Inception", "Sci-Fi", 2010, 1500, "https://www.youtube.com/watch?v=YoHD9XEInc0");
 
+			Assert::AreEqual(vectortowatch.watchlist_add(f1), true);
+			Assert::AreEqual(vectortowatch.watchlist_add(f2), true);
+
+			vector<Film> watch_list_expected;
+			watch_list_expected.push_back(f1);
+			watch_list_expected.push_back(f2);
+
+			vector<Film> temp = vectortowatch.watchlist_show();
+
+			for (auto i = 0; i < temp.size(); i++)
+			{
+				Assert::AreEqual(watch_list_expected[i] == temp[i], true);
+			}
+		}
 	};
 
 }

@@ -15,3 +15,8 @@ Film::Film(string Title, string Genre, int Year, int nrLikes, string Trailer)
 }
 
 Film::~Film() = default;
+
+bool Film::operator== (Film f2) const
+{
+    return((this->title == f2.get_titel()) && (this->year == f2.get_jahr()));
+}

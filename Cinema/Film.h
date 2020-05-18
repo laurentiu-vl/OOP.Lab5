@@ -156,4 +156,6 @@ public:
     string get_trailer() { return this->trailer; };
 
     ~Film();
+
+    bool operator== (Film f2) const;
 };
