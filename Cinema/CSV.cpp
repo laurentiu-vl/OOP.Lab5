@@ -2,7 +2,7 @@
 
 using namespace std;
 
-void CSV::write_watchlist_in_file(vector<Film> v)
+string CSV::write_watchlist_in_file(vector<Film> v)
 {
 	ofstream myfile;
 	myfile.open("watchlist.csv");
@@ -10,5 +10,5 @@ void CSV::write_watchlist_in_file(vector<Film> v)
 	{
 		myfile << v[i].get_titel() << "," << v[i].get_genre() << "," << v[i].get_jahr() << "," << v[i].get_anz_likes() << "," << v[i].get_trailer() << "\n";
 	}
-
+	return "watchlist.csv";
 }

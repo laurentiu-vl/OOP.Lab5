@@ -4,6 +4,7 @@
 #include "UserRepo.h" 
 #include "BaseFileOutput.h"
 #include <map>
+#include <utility>
 
 using namespace std;
 
@@ -16,7 +17,7 @@ protected:
     /** @brief	The repo */
     Repository Repo;
 
-    map <string, BaseFileOutput*> OutputMap;
+    map<string, BaseFileOutput*> OutputMap;
 
 public:
 
@@ -223,5 +224,6 @@ public:
          * @author	Laurentiu
          * @date	14-May-20
         */
+
     ~Controller();
 };

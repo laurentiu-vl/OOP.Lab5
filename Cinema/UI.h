@@ -1,9 +1,11 @@
 #include <iostream>
 #include "Controller.h"
 
-class UI : public Controller
+class UI
 {
 public:
+
+    //map<string, BaseFileOutput*> OutputMap;
 
     /**
      * @fn	UI::UI();

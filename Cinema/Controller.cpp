@@ -6,6 +6,7 @@
 #include "HTML.h"
 #include <iostream>
 #include <string>
+#include "UI.h"
 
 using namespace std;
 
@@ -16,15 +17,16 @@ Controller::Controller(UserWatchlist UserRepo, Repository Repo)
 
      this->Repo.ReadFromFile();
 
-     this->OutputMap.insert(make_pair("HTML", new HTML));
-     this->OutputMap.insert(make_pair("TEXT", new TEXT));
-     this->OutputMap.insert(make_pair("CSV", new CSV));
-  
+     this->OutputMap["HTML"] = new HTML();
+     this->OutputMap["CSV"] = new CSV();
 }
 
 Controller::Controller() = default;
 
-Controller::~Controller() = default;
+Controller::~Controller()
+{
+    this->Repo.WriteToFile();
+}
 
 bool Controller::add_admin(Film f)
 {
@@ -167,24 +169,21 @@ vector <Film> Controller::movies_by_genre_to_show(string genre)
 
 bool Controller::Export_Watchlist(string option)
 {
+    vector <Film> movies = UserRepo.watchlist_show();
+    cout << movies.size();
+    /*
     vector <Film> movies;
     for (int i = 0; i < 3; i++)
     {
         auto f = Film("dd", "dd", 22, 22, "dd");
         movies.push_back(f);
     }
-    if (option.compare("HTML") == 0)
+    */
+    if (this->OutputMap.find(option) == this->OutputMap.end())
     {
-
-        OutputMap["HTML"]->write_watchlist_in_file(movies);
-        ShellExecuteA(0, "open", "watchlist.html", 0, 0, SW_SHOW);
-        return true;
+        return false;
     }
-    else if (option.compare("CSV") == 0)
-    {
-        OutputMap["CSV"]->write_watchlist_in_file(UserRepo.watchlist_show());
-        ShellExecuteA(0, "open", "watchlist.csv", 0, 0, SW_SHOW);
-        return true;
-    }
-    return false;
+    auto filename = this->OutputMap[option]->write_watchlist_in_file(movies);
+    ShellExecuteA(0, "open", filename.c_str(), 0, 0, SW_SHOW);
+    return true;
 }

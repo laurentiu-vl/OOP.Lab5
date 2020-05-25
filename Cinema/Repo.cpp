@@ -162,7 +162,7 @@ void Repository::ReadFromFile()
     {
         while (getline(myfile, line))
         {
-            cout << line << endl;
+            //cout << line << endl;
             v.clear();
             stringstream ss(line);
             while (getline(ss, line, ','))
@@ -179,6 +179,17 @@ void Repository::ReadFromFile()
             this->data.push_back(newFilm);
         }
     }
+}
+
+void Repository::WriteToFile()
+{
+    ofstream myfile;
+    myfile.open("informatii.txt", ios::trunc);
+    for (size_t i = 0; i < data.size(); i++)
+    {
+        myfile << data[i].get_titel() << "," << data[i].get_genre() << "," << data[i].get_jahr() << "," << data[i].get_anz_likes() << "," << data[i].get_trailer() << ",\n";
+    }
+
 }
 
 Repository::~Repository() = default;

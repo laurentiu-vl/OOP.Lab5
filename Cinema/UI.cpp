@@ -1,5 +1,8 @@
 #include "UI.h"
 #include <string>
+#include "HTML.h"
+#include "CSV.h"
+#include "TEXT.h"
 
 using namespace std;
 
@@ -8,6 +11,13 @@ UI::~UI() = default;
 
 void UI::program() 
 {
+   // map<string, BaseFileOutput*> OutputMap = {
+   //{"HTML", new HTML},
+   //{"TEXT", new TEXT},
+   //{"CSV", new CSV}
+   // };
+
+
     Repository repo = Repository();       /// repo
 
     UserWatchlist watchlist = UserWatchlist();    /// watchlist of user
@@ -37,6 +47,8 @@ void UI::program()
     controller.add_admin(f9);
     controller.add_admin(f10);
     */
+
+    //repo.ReadFromFile();
 
     int opt = -1;
     while (opt)
@@ -317,7 +329,7 @@ void UI::program()
                 cout << "Enter Export File -> HTML/CSV: ";
                 string export_op;
                 cin >> export_op;
-                while (Export_Watchlist(export_op) == false)
+                while (controller.Export_Watchlist(export_op) == false)
                 {
                     cout << "Invalid Option, please enter HTML/CSV(upper case)!";
                     cin.clear();
@@ -690,4 +702,5 @@ void UI::program()
             }
         }
     }
+    //delete &controller;
 }

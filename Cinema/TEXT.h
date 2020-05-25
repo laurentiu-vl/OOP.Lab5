@@ -11,5 +11,5 @@ using namespace std;
 class TEXT : public BaseFileOutput
 {
 	//void write_filmlist_in_file(vector<Film> v) override;
-	void write_watchlist_in_file(vector<Film> v) override;
+	string write_watchlist_in_file(vector<Film> v) override;
 };

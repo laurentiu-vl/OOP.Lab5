@@ -26,6 +26,22 @@ private:
 
     int get_listesize() { return static_cast<int>(data.size()); }
 
+        /**
+     * @fn	vector <Film>::iterator Repository::search_a_movie(string title, int year);
+     *
+     * @brief	Searches for the first a movie
+     *
+     * @author	Laurentiu
+     * @date	14-May-20
+     *
+     * @param 	title	The title.
+     * @param 	year 	The year.
+     *
+     * @returns	The found a movie.
+     */
+
+    vector <Film>::iterator search_a_movie(string title, int year);
+
 public:    
 
     /**
@@ -157,22 +173,6 @@ public:
    // bool edit_valid(Film);
 
     /**
-     * @fn	vector <Film>::iterator Repository::search_a_movie(string title, int year);
-     *
-     * @brief	Searches for the first a movie
-     *
-     * @author	Laurentiu
-     * @date	14-May-20
-     *
-     * @param 	title	The title.
-     * @param 	year 	The year.
-     *
-     * @returns	The found a movie.
-     */
-
-    vector <Film>::iterator search_a_movie(string title, int year);
-
-    /**
      * @fn	bool Repository::edit_title(string title, int year, string new_title);
      *
      * @brief	Edit title
@@ -267,6 +267,8 @@ public:
      */
 
     void ReadFromFile();
+
+    void WriteToFile();
 
     ~Repository();
 

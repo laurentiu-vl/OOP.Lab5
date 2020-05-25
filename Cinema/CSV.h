@@ -10,5 +10,5 @@ class CSV : public BaseFileOutput
 {
 public:
 
-	void write_watchlist_in_file(vector<Film> v) override;
+	string write_watchlist_in_file(vector<Film> v) override;
 };
