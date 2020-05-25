@@ -12,8 +12,9 @@ void UI::program()
 
     UserWatchlist watchlist = UserWatchlist();    /// watchlist of user
 
-    Controller controller = Controller(watchlist, repo);
+    auto controller = Controller(watchlist, repo);
 
+    /*
     Film f1 = Film("Seven", "Crime", 1995, 100, "https://www.youtube.com/watch?v=znmZoVkCjpI");
     Film f2 = Film("Inception", "Sci-Fi", 2010, 1500, "https://www.youtube.com/watch?v=YoHD9XEInc0");
     Film f3 = Film("Matrix", "Sci-Fi", 1999, 10000, "https://www.youtube.com/watch?v=m8e-FF8MsqU");
@@ -35,7 +36,7 @@ void UI::program()
     controller.add_admin(f8);
     controller.add_admin(f9);
     controller.add_admin(f10);
-
+    */
 
     int opt = -1;
     while (opt)
@@ -56,7 +57,8 @@ void UI::program()
                     << "1. Search by genre\n"
                     << "2. Show watchlist\n"
                     << "3. Delete from watchlist\n"
-                    << "4. Add movie to watchlist\n\n"
+                    << "4. Add movie to watchlist\n"
+                    << "5. Export watchlist to HTML/CSV\n\n"
                     << "Option: ";
                 cin >> u;
 
@@ -310,9 +312,23 @@ void UI::program()
                     Film f = Film(title, genre, year, nrlikes, trailer);
                     controller.add_to_watch(f);
                 }
+                else if (u == 5)
+                {
+                cout << "Enter Export File -> HTML/CSV: ";
+                string export_op;
+                cin >> export_op;
+                while (Export_Watchlist(export_op) == false)
+                {
+                    cout << "Invalid Option, please enter HTML/CSV(upper case)!";
+                    cin.clear();
+                    cin.ignore();
+                    cin >> export_op;
+                }
+
+                }
                 else
                 {
-                    cout << "\nInvalid Option! Choose a number between 0-4 !";
+                    cout << "\nInvalid Option! Choose a number between 0-5 !";
                 }
             }
 
@@ -327,7 +343,7 @@ void UI::program()
                 << "1. Add Film\n" 
                 << "2. Delete Film\n"
                 << "3. Edit Film\n"
-                << "4. Show list\n\n"
+                << "4. Show Film list\n\n"
                 << "Option: ";
                 cin >> a;
                 if(a == 0)
@@ -669,7 +685,7 @@ void UI::program()
                 }
                 else
                 {
-                cout << "\nInvalid Option! Choose a number between 0-4 !";
+                    cout << "\nInvalid Option! Choose a number between 0-4 !";
 				}
             }
         }

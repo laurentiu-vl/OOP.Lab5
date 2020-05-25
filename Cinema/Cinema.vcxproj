@@ -138,17 +138,25 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BaseFileOutput.cpp" />
+    <ClCompile Include="CSV.cpp" />
+    <ClCompile Include="HTML.cpp" />
     <ClCompile Include="Repo.cpp" />
     <ClCompile Include="Controller.cpp" />
     <ClCompile Include="Film.cpp" />
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="TEXT.cpp" />
     <ClCompile Include="UI.cpp" />
     <ClCompile Include="UserRepo.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BaseFileOutput.h" />
+    <ClInclude Include="CSV.h" />
+    <ClInclude Include="HTML.h" />
     <ClInclude Include="Repo.h" />
     <ClInclude Include="Controller.h" />
     <ClInclude Include="Film.h" />
+    <ClInclude Include="TEXT.h" />
     <ClInclude Include="UI.h" />
     <ClInclude Include="UserRepo.h" />
   </ItemGroup>

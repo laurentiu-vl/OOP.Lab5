@@ -1,12 +1,25 @@
-#include <iostream>
 #include "Controller.h"
 #include "Repo.h"
 #include "UserRepo.h"
+#include "CSV.h"
+#include "TEXT.h"
+#include "HTML.h"
+#include <iostream>
+#include <string>
+
+using namespace std;
 
 Controller::Controller(UserWatchlist UserRepo, Repository Repo)
 {
      this->UserRepo = UserRepo;
      this->Repo = Repo;
+
+     this->Repo.ReadFromFile();
+
+     this->OutputMap.insert(make_pair("HTML", new HTML));
+     this->OutputMap.insert(make_pair("TEXT", new TEXT));
+     this->OutputMap.insert(make_pair("CSV", new CSV));
+  
 }
 
 Controller::Controller() = default;
@@ -150,4 +163,28 @@ vector <Film> Controller::movies_by_genre_to_show(string genre)
     }
 
     return list_g;
+}
+
+bool Controller::Export_Watchlist(string option)
+{
+    vector <Film> movies;
+    for (int i = 0; i < 3; i++)
+    {
+        auto f = Film("dd", "dd", 22, 22, "dd");
+        movies.push_back(f);
+    }
+    if (option.compare("HTML") == 0)
+    {
+
+        OutputMap["HTML"]->write_watchlist_in_file(movies);
+        ShellExecuteA(0, "open", "watchlist.html", 0, 0, SW_SHOW);
+        return true;
+    }
+    else if (option.compare("CSV") == 0)
+    {
+        OutputMap["CSV"]->write_watchlist_in_file(UserRepo.watchlist_show());
+        ShellExecuteA(0, "open", "watchlist.csv", 0, 0, SW_SHOW);
+        return true;
+    }
+    return false;
 }

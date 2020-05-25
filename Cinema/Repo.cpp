@@ -150,4 +150,35 @@ vector <Film> Repository::search_by_genre(string genre)
 
 }
 
+void Repository::ReadFromFile()
+{
+    ifstream myfile;
+    myfile.open("filme.txt", ios::in);
+    string line;
+    string title, genre, link;
+    int year, nr_likes;
+    vector <string> v;
+    if (myfile.is_open())
+    {
+        while (getline(myfile, line))
+        {
+            cout << line << endl;
+            v.clear();
+            stringstream ss(line);
+            while (getline(ss, line, ','))
+            {
+                v.push_back(line);
+            }
+            title = v[0];
+            genre = v[1];
+            year = stoi(v[2]);
+            nr_likes = stoi(v[3]);
+            link = v[4];
+
+            Film newFilm = Film(title, genre, year, nr_likes, link);
+            this->data.push_back(newFilm);
+        }
+    }
+}
+
 Repository::~Repository() = default;

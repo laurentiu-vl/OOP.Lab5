@@ -2,6 +2,10 @@
 #include "Film.h"
 #include "Repo.h"
 #include "UserRepo.h" 
+#include "BaseFileOutput.h"
+#include <map>
+
+using namespace std;
 
 class Controller
 {
@@ -11,6 +15,8 @@ protected:
 
     /** @brief	The repo */
     Repository Repo;
+
+    map <string, BaseFileOutput*> OutputMap;
 
 public:
 
@@ -203,16 +209,19 @@ public:
 
     void edit_nrlikes_admin(string title, int year, int likes);
 
-    /**
-     * @fn	Controller::~Controller();
-     *
-     * @brief	Destructor
-     *
-     * @author	Laurentiu
-     * @date	14-May-20
-     */
+
 
     vector <Film> movies_by_genre_to_show(string);
+
+    bool Export_Watchlist(string option);
     
+        /**
+         * @fn	Controller::~Controller();
+         *
+         * @brief	Destructor
+         *
+         * @author	Laurentiu
+         * @date	14-May-20
+        */
     ~Controller();
 };

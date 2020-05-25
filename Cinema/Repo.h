@@ -1,5 +1,8 @@
 #pragma once
 #include <vector>
+#include <fstream>
+#include <sstream>
+#include <fstream>
 #include "Film.h"
 
 class Repository
@@ -262,6 +265,8 @@ public:
      * @author	Laurentiu
      * @date	14-May-20
      */
+
+    void ReadFromFile();
 
     ~Repository();
 
