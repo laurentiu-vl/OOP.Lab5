@@ -11,44 +11,11 @@ UI::~UI() = default;
 
 void UI::program() 
 {
-   // map<string, BaseFileOutput*> OutputMap = {
-   //{"HTML", new HTML},
-   //{"TEXT", new TEXT},
-   //{"CSV", new CSV}
-   // };
-
-
     Repository repo = Repository();       /// repo
 
     UserWatchlist watchlist = UserWatchlist();    /// watchlist of user
 
     auto controller = Controller(watchlist, repo);
-
-    /*
-    Film f1 = Film("Seven", "Crime", 1995, 100, "https://www.youtube.com/watch?v=znmZoVkCjpI");
-    Film f2 = Film("Inception", "Sci-Fi", 2010, 1500, "https://www.youtube.com/watch?v=YoHD9XEInc0");
-    Film f3 = Film("Matrix", "Sci-Fi", 1999, 10000, "https://www.youtube.com/watch?v=m8e-FF8MsqU");
-    Film f4 = Film("Godfather", "Crime", 1972, 1000, "https://www.youtube.com/watch?v=sY1S34973zA");
-    Film f5 = Film("Pulp Fiction", "Crime", 1994, 500, "https://www.youtube.com/watch?v=s7EdQ4FqbhY");
-    Film f6 = Film("Fight Club", "Drama", 1999, 800, "https://www.youtube.com/watch?v=qtRKdVHc-cE");
-    Film f7 = Film("Heat", "Thriller", 1995, 900, "https://www.youtube.com/watch?v=2GfZl4kuVNI");
-    Film f8 = Film("Casino", "Crime", 1995, 200, "https://www.youtube.com/watch?v=EJXDMwGWhoA");
-    Film f9 = Film("Goodfellas", "Biography", 1990, 500, "https://www.youtube.com/watch?v=qo5jJpHtI1Y");
-    Film f10 = Film("The Silence of the Lambs", "Thriller", 1991, 1000, "https://www.youtube.com/watch?v=W6Mm8Sbe__o");
-
-    controller.add_admin(f1);
-    controller.add_admin(f2);
-    controller.add_admin(f3);   /// am sters din admin add cout-ul si dam cout in ui ca sa nu apara de 10 ori
-    controller.add_admin(f4);
-    controller.add_admin(f5);
-    controller.add_admin(f6);
-    controller.add_admin(f7);
-    controller.add_admin(f8);
-    controller.add_admin(f9);
-    controller.add_admin(f10);
-    */
-
-    //repo.ReadFromFile();
 
     int opt = -1;
     while (opt)
@@ -189,7 +156,7 @@ void UI::program()
                     while (cin.fail())
                     {
                         if (cin.fail())
-                            cout << "Invalid input! Please input a positive integer! Try again as many times as you need!\n";
+                            cout << "Invalid input! Please input a string! Try again as many times as you need!\n";
                         while (cin.fail())
                         {
                             cin.clear();
@@ -234,7 +201,7 @@ void UI::program()
                     while (cin.fail())
                     {
                         if (cin.fail())
-                            cout << "Invalid input! Please input a positive integer! Try again as many times as you need!\n";
+                            cout << "Invalid input! Please input a string! Try again as many times as you need!\n";
                         while (cin.fail())
                         {
                             cin.clear();
@@ -252,7 +219,7 @@ void UI::program()
                     while (cin.fail())
                     {
                         if (cin.fail())
-                            cout << "Invalid input! Please input a positive integer! Try again as many times as you need!\n";
+                            cout << "Invalid input! Please input a string! Try again as many times as you need!\n";
                         while (cin.fail())
                         {
                             cin.clear();
@@ -306,7 +273,7 @@ void UI::program()
                     while (cin.fail())
                     {
                         if (cin.fail())
-                            cout << "Invalid input! Please input a positive integer! Try again as many times as you need!\n";
+                            cout << "Invalid input! Please input a string! Try again as many times as you need!\n";
                         while (cin.fail())
                         {
                             cin.clear();
@@ -372,7 +339,7 @@ void UI::program()
                     while (cin.fail())
                     {
                         if (cin.fail())
-                            cout << "Invalid input! Please input a positive integer! Try again as many times as you need!\n";
+                            cout << "Invalid input! Please input a string! Try again as many times as you need!\n";
                         while (cin.fail())
                         {
                             cin.clear();
@@ -390,7 +357,7 @@ void UI::program()
                     while (cin.fail())
                     {
                         if (cin.fail())
-                            cout << "Invalid input! Please input a positive integer! Try again as many times as you need!\n";
+                            cout << "Invalid input! Please input a string! Try again as many times as you need!\n";
                         while (cin.fail())
                         {
                             cin.clear();
@@ -444,7 +411,7 @@ void UI::program()
                     while (cin.fail())
                     {
                         if (cin.fail())
-                            cout << "Invalid input! Please input a positive integer! Try again as many times as you need!\n";
+                            cout << "Invalid input! Please input a string! Try again as many times as you need!\n";
                         while (cin.fail())
                         {
                             cin.clear();
@@ -476,7 +443,7 @@ void UI::program()
                     while (cin.fail())
                     {
                         if (cin.fail())
-                            cout << "Invalid input! Please input a positive integer! Try again as many times as you need!\n";
+                            cout << "Invalid input! Please input a string! Try again as many times as you need!\n";
                         while (cin.fail())
                         {
                             cin.clear();
@@ -520,7 +487,7 @@ void UI::program()
                     while (cin.fail())
                     {
                         if (cin.fail())
-                            cout << "Invalid input! Please input a positive integer! Try again as many times as you need!\n";
+                            cout << "Invalid input! Please input a string! Try again as many times as you need!\n";
                         while (cin.fail())
                         {
                             cin.clear();
@@ -576,7 +543,7 @@ void UI::program()
                             while (cin.fail())
                             {
                                 if (cin.fail())
-                                    cout << "Invalid input! Please input a positive integer! Try again as many times as you need!\n";
+                                    cout << "Invalid input! Please input a string! Try again as many times as you need!\n";
                                 while (cin.fail())
                                 {
                                     cin.clear();
@@ -599,7 +566,7 @@ void UI::program()
                             while (cin.fail())
                             {
                                 if (cin.fail())
-                                    cout << "Invalid input! Please input a positive integer! Try again as many times as you need!\n";
+                                    cout << "Invalid input! Please input a string! Try again as many times as you need!\n";
                                 while (cin.fail())
                                 {
                                     cin.clear();
@@ -668,7 +635,7 @@ void UI::program()
                             while (cin.fail())
                             {
                                 if (cin.fail())
-                                    cout << "Invalid input! Please input a positive integer! Try again as many times as you need!\n";
+                                    cout << "Invalid input! Please input a string! Try again as many times as you need!\n";
                                 while (cin.fail())
                                 {
                                     cin.clear();

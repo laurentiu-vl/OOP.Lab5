@@ -170,15 +170,7 @@ vector <Film> Controller::movies_by_genre_to_show(string genre)
 bool Controller::Export_Watchlist(string option)
 {
     vector <Film> movies = UserRepo.watchlist_show();
-    cout << movies.size();
-    /*
-    vector <Film> movies;
-    for (int i = 0; i < 3; i++)
-    {
-        auto f = Film("dd", "dd", 22, 22, "dd");
-        movies.push_back(f);
-    }
-    */
+
     if (this->OutputMap.find(option) == this->OutputMap.end())
     {
         return false;
